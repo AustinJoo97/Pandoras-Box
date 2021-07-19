@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'big-Ol-Secret';
+const secret = process.env.JWT_SECRET || 'big-Ol-Secret'; 
 const expiration = '2h';
 
+// json web token authenticator and token signer
 module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
 
+
+import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -41,11 +43,11 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <main className="">
+      <div className="">
+        <div className="">
+          <h4 className="">Login</h4>
+          <div className="">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -70,7 +72,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >

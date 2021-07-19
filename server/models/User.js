@@ -19,14 +19,15 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  thoughts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Thought',
-    },
-  ],
+  // lists: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'userLists',
+  //   },
+  // ],
 });
 
+// user password encryption
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
