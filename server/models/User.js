@@ -19,12 +19,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  // lists: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'userLists',
-  //   },
-  // ],
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Album'
+    }
+  ],
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ]
 });
 
 // user password encryption
