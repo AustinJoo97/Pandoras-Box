@@ -21,17 +21,16 @@ const typeDefs = gql`
 
   type Album {
     _id: ID,
-    spotifyID: String!
+    albumID: String!
     name: String!
     artist: String
-    popularity: Int
     favorited: Int
     comments: [Comment]
   }
 
   type Artist{
     _id: String!
-    spotifyID: String!
+    albumID: String!
     name: String!
     albums: [Album]
     comments: [Comment]
@@ -42,11 +41,10 @@ const typeDefs = gql`
     user: User
   }
 
-
-
   type Query {
     getUsers: [User]
     getSingleUser(username: String!): User
+    me: User
     getComments: [Comment]
     getAlbums: [Album]
     getSingleAlbum(name: String!): Album
@@ -56,8 +54,11 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addComment
-    editComment
+    addNewFavorite(albumID: ID, artist: ID): Album
+    deleteFavorite(albumID: ID, artist: ID): Album
+    addComment(commentText: String!, commentDate: String!, albumCommented: String, artistCommented: String): Comment
+    editComment(commentID: ID!): Comment
+    deleteComment(commentID: ID!): Comment
   }
 `;
 

@@ -13,11 +13,10 @@ const albumSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Artist'
     },
-    popularity: {
-        type: Int
-    },
     favorited: {
-        type: Int
+        type: Number,
+        required: true,
+        default: 0
     },
     comments: [
         {
