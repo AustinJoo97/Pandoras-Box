@@ -1,21 +1,37 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Comment, Album, Artist } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find().populate('thoughts');
+    getUsers: async () => {
+      return User.find().populate('favorites', 'comments');
+      // return User.find().populate('favorites').populate('comments');
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+    getSingleUser: async (parent, { username }) => {
+      return User.findOne({ username }).populate('favorites', 'comments');
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('*something*');
+        return User.findOne({ _id: context.user._id }).populate('favorites', 'comments');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    getComments: async() => {
+      return Comment.find().populate('postedBy', 'albumCommented', 'artistCommented');
+    },
+    getAlbums: async() => {
+      return Album.find().populate('artist', 'comments');
+    },
+    getSingleAlbum: async(parent, { albumName }) => {
+      return await Album.findOne({ name: albumName }).populate('artist', 'comments');
+    },
+    getArtists: async() => {
+      return Artist.find().populate('albums', 'comments');
+    },
+    getSingleArtist: async(parent, { artistName }) => {
+      return await Artist.findOne({name: artistName}).populate('albums', 'comments');
+    }
   },
 
   Mutation: {
@@ -41,7 +57,21 @@ const resolvers = {
 
       return { token, user };
     },
-    
+    addNewFavorite: async (parent, { albumID, artistID }){
+      return
+    },
+    deleteFavorite: async (parent, { albumID, artistID }){
+      return
+    },
+    addComment: async (parent, { commentText, commentDate, albumCommented, artistCommented }){
+      return
+    },
+    editComment: async (parent, { commentID, commentText, commentDate }){
+      return
+    },
+    deleteComment: async (parent, { commentID }){
+      return
+    }
   },
 };
 

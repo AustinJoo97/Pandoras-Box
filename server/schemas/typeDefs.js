@@ -48,7 +48,8 @@ const typeDefs = gql`
     getComments: [Comment]
     getAlbums: [Album]
     getSingleAlbum(name: String!): Album
-    GetArtist(name: String!): Artist
+    getArtistis: [Artist]
+    getSingleArtist(name: String!): Artist
   }
 
   type Mutation {
@@ -57,7 +58,7 @@ const typeDefs = gql`
     addNewFavorite(albumID: ID, artist: ID): Album
     deleteFavorite(albumID: ID, artist: ID): Album
     addComment(commentText: String!, commentDate: String!, albumCommented: String, artistCommented: String): Comment
-    editComment(commentID: ID!): Comment
+    editComment(commentID: ID!, commentText: String!, commentDate: String!): Comment
     deleteComment(commentID: ID!): Comment
   }
 `;
