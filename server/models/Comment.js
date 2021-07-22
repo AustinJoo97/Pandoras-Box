@@ -19,10 +19,6 @@ const commentSchema = new Schema({
     albumCommented: {
         type: Schema.Types.ObjectId,
         ref: 'Album'
-    },
-    artistCommented: {
-        type: Schema.Types.ObjectId,
-        ref: 'Artist'
     }
 });
 

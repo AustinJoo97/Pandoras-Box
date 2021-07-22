@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const albumSchema = new Schema({
-    spotifyID: {
+    _id: {
         type: String,
         required: true
     },
@@ -10,8 +10,7 @@ const albumSchema = new Schema({
         required: true
     },
     artist: {
-        type: Schema.Types.ObjectId,
-        ref: 'Artist'
+        type: String
     },
     favorited: {
         type: Number,

@@ -10,29 +10,19 @@ const typeDefs = gql`
     comments: [Comment]
   }
 
-  type Comments{
+  type Comment {
     _id: ID!
     commentText: String!
     commentDate: String!
     postedBy: User
     albumCommented: Album
-    artistCommented: Artist
   }
 
   type Album {
-    _id: ID,
-    albumID: String!
+    _id: String!
     name: String!
     artist: String
-    favorited: Int
-    comments: [Comment]
-  }
-
-  type Artist{
-    _id: String!
-    albumID: String!
-    name: String!
-    albums: [Album]
+    favorited: Number!
     comments: [Comment]
   }
 
@@ -46,18 +36,19 @@ const typeDefs = gql`
     getSingleUser(username: String!): User
     me: User
     getComments: [Comment]
+    getUserComments: [Comment]
     getAlbums: [Album]
-    getSingleAlbum(name: String!): Album
-    GetArtist(name: String!): Artist
+    getFavoritedAlbums: [Album]
+    getSingleAlbum(albumID: ID): Album
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addNewFavorite(albumID: ID, artist: ID): Album
-    deleteFavorite(albumID: ID, artist: ID): Album
-    addComment(commentText: String!, commentDate: String!, albumCommented: String, artistCommented: String): Comment
-    editComment(commentID: ID!): Comment
+    addNewFavorite(albumID: ID): Album
+    deleteFavorite(albumID: ID): Album
+    addComment(commentText: String!, commentDate: String!, albumCommented: String): Comment
+    editComment(commentID: ID!, commentText: String!, commentDate: String!): Comment
     deleteComment(commentID: ID!): Comment
   }
 `;
