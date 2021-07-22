@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import Auth from '../../utils/auth';
 
@@ -9,43 +10,58 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="">
-      <div className="">
-        <div>
+    <header className="p-3 mb-3 border-bottom">
+      <div className="container">
+        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-          <input type="text" placeholder="Search..."></input>
-          <button type="submit">GO</button>
-          
-        </div>
-        <div>
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <h3>Pandoras Box</h3>
+          </a>
 
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Pandoras Box</h1>
-          </Link>
 
-        </div>
-        <div>
-          
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn" to="/me">
-                {Auth.getProfile().data.username}'s profile
-              </Link>
-              <button className="btn" onClick={logout}>
-                Logout
-              </button>
-            </>
+          <Dropdown className="col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <Dropdown.Toggle variant="info" id="dropdown-basic">
+               Categories
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/">Rap</Dropdown.Item>
+                <Dropdown.Item href="/">Country</Dropdown.Item>
+                <Dropdown.Item href="/">Hip-Hop</Dropdown.Item>
+                <Dropdown.Item href="/">Folk</Dropdown.Item>
+                <Dropdown.Item href="/">R&B</Dropdown.Item>
+                <Dropdown.Item href="/">Techno</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
 
-          ) : (
-            <>
-              <Link className="btn" to="/login">
-                Login
-              </Link>
-              <Link className="btn" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
+          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search"></input>
+          </form>
+            {Auth.loggedIn() ? (
+              <>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Options
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">View Favorites</Dropdown.Item>
+                <Dropdown.Item onClick={logout}> Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+              </>
+            ) : (
+              <>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Options
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/login">Login</Dropdown.Item>
+                <Dropdown.Item href="/signup">Sign Up</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+              </>
+            )}
         </div>
       </div>
     </header>

@@ -4,8 +4,12 @@ const CreateCarousel = (...props) => {
     // probably will take in user lists or home lists as a prop
 
     return (
-        <div>
-            <span>some carousel</span>
+        <div className="container">
+            <h2>{props.title}</h2>
+            <div className="row flex-nowrap overflow-auto">
+            {/* this should grab everything to be shown in carousel */}
+            {props.container}
+            </div>
         </div>
     )
 }
