@@ -16,6 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // Construct our main GraphQL API endpoint
@@ -50,8 +51,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="">
-          <Header />
-
+          <Header/>
           <div className="">
             <Route exact path="/">
               <Home />
