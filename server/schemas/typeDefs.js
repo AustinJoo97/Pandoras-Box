@@ -46,8 +46,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addNewFavorite(albumID: ID): Album
     deleteFavorite(albumID: ID): Album
-    addComment(commentText: String!, commentDate: String!, albumCommented: String): Comment
-    editComment(commentID: ID!, commentText: String!, commentDate: String!): Comment
+    addComment(commentText: String!, albumCommented: String!): Comment
+    editComment(commentID: ID!, commentText: String!): Comment
     deleteComment(commentID: ID!): Comment
   }
 `;
