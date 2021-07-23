@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 // pages
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-// import Discover from './pages/Discover'
+import Artist from './pages/Artist';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
@@ -71,6 +71,10 @@ function App() {
 
             <Route exact path="/signup">
               <Signup />
+            </Route>
+
+            <Route exact path="/test">
+              <Artist />
             </Route>
           </div>
           <Footer />

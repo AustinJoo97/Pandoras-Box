@@ -1,0 +1,36 @@
+
+#artistProfile {
+    background-color: cadetblue;
+}
+
+#artistProfile > h2 {
+    font-family: cursive;
+}
+
+#artistProfile > p {
+    font-size: .9rem;
+}
+
+#artistProfile > img {
+    height: 300px;
+    width: 300px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+#albumCard {
+    font-size: 24px;
+    
+}
+
+#albumCard > h3 {
+    font-family: serif;
+}
+
+#albumCard > p {
+    font-size: 18px;
+}
+
