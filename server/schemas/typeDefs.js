@@ -22,7 +22,6 @@ const typeDefs = gql`
     _id: String!
     name: String!
     artist: String
-    favorited: Number!
     comments: [Comment]
   }
 
