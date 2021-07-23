@@ -12,11 +12,6 @@ const albumSchema = new Schema({
     artist: {
         type: String
     },
-    favorited: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     comments: [
         {
             type: Schema.Types.ObjectId,
