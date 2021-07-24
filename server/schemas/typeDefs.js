@@ -24,7 +24,8 @@ const typeDefs = gql`
     _id: String!
     name: String!
     artist: String
-    genres: [String]
+    images: [String]
+    genre: String
     comments: [Comment]
   }
 
