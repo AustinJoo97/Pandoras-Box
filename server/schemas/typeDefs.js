@@ -6,6 +6,8 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    location: String
+    bio: String
     favorites: [Album]
     comments: [Comment]
   }
@@ -22,6 +24,7 @@ const typeDefs = gql`
     _id: String!
     name: String!
     artist: String
+    genres: [String]
     comments: [Comment]
   }
 

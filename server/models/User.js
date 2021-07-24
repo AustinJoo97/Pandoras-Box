@@ -19,6 +19,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  location: {
+    type: String
+  },
+  bio: {
+    type: String
+  },
   favorites: [
     {
       type: Schema.Types.ObjectId,
