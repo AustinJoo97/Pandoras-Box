@@ -55,7 +55,7 @@ const resolvers = {
     },
 
     getSingleAlbum: async(parent, { albumID }) => {
-      return await Album.findOne({ _id: albumID }).populate('comments');
+      return Album.findOne({ _id: albumID }).populate('comments');
     }
   },
 
