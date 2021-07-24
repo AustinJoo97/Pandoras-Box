@@ -42,7 +42,7 @@ const typeDefs = gql`
     getUserComments: [Comment]
     getAlbums: [Album]
     getFavoritedAlbums: [Album]
-    getSingleAlbum(albumID: ID): Album
+    getSingleAlbum(albumID: String): Album
   }
 
   type Mutation {
