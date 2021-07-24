@@ -1,10 +1,4 @@
-// import { Redirect, useParams } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
-// import { QUERY_ARTIST } from '../utils/queries';
-
-import ViewArtist from '../components/DisplayArtistView';
 import ViewAlbum from '../components/DisplayAlbumView';
-
 
 const sampData = {
     artistName: "The beatles",
@@ -66,40 +60,16 @@ const sampData = {
     ]
 }
 
-const ArtistPage = () => {
-
-    // sample data for artist search
-    
-
-    // for when we have our fetch set up
-    // 
-    // const { artist: artistParam } = useParams();
-
-    // const { loading, data } = useQuery(QUERY_ARTIST, {
-    //     variables: { artist: artistParam },
-    // });
-
-    // const targetArtist = data.artist || {};
-
-    // if(loading){
-    //     return <div>Loading...</div>
-    // }
-
-    // if (data.artist.length = 0) {
-    //     return (
-    //         <h4>Error finding seach, please check your spelling and try again.</h4>
-    //     )
-    // }
+const AlbumPage = () => {
 
     return (
-        <div>
-            <ViewArtist artist={sampData} />
-            {/* <ViewAlbum 
+        <div> 
+            <ViewAlbum 
                 album={sampData.albums[0]}
-                artist={sampData.artistName} 
-            /> */}
+                artist={sampData.artistName}
+            />
         </div>
     )
 }
 
-export default ArtistPage;
+export default AlbumPage;
