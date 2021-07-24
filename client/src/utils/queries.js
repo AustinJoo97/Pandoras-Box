@@ -83,7 +83,7 @@ export const QUERY_ALBUMS = gql`
       _id
       name
       artist
-      images
+      image
       genre
       comments {
         _id
@@ -106,7 +106,7 @@ export const QUERY_FAVORITE_ALBUMS = gql`
       _id
       name
       artist
-      images
+      image
       genre
       comments {
         _id
@@ -129,7 +129,7 @@ export const QUERY_SINGLE_ALBUM = gql`
       _id
       name
       artist
-      images
+      image
       genre
       comments {
         _id

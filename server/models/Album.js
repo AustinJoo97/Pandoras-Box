@@ -12,6 +12,9 @@ const albumSchema = new Schema({
     artist: {
         type: String
     },
+    images: {
+        type: String
+    },
     genre: {
         type: String
     },
