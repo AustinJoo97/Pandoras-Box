@@ -54,7 +54,7 @@ const getGenres = async (token) => {
 // TOKEN AND GENREID PASSED IN FROM GENRE API CALL
 const getAlbums = async (token, genreID) => {
   const { data } = await axios.get(
-    `https://api.spotify.com/v1/search?q=${genreID}&type=album&market=US&limit=1`,
+    `https://api.spotify.com/v1/search?q=${genreID}&type=album&market=US&limit=25`,
     {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
