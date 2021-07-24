@@ -16,6 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import UpdateUser from './pages/UpdateUser';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -63,6 +64,10 @@ function App() {
 
             <Route exact path="/profiles/:username">
               <Profile />
+            </Route>
+
+            <Route exact path="/settings">
+              <UpdateUser />
             </Route>
 
             <Route exact path="/login">
