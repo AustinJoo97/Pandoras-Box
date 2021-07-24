@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// Working
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -12,6 +13,7 @@ export const ADD_USER = gql`
   }
 `;
 
+// Working
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -24,12 +26,14 @@ export const LOGIN_USER = gql`
   }
 `;
 
+
 export const ADD_NEW_FAVORITE = gql`
   mutation addFavorite($albumID: String!){
     addNewFavorite(albumID: $albumID){
       _id
       name
       artist
+      genres
       comments {
         _id
         commentText
@@ -37,12 +41,7 @@ export const ADD_NEW_FAVORITE = gql`
         postedBy {
           _id
           username
-          email
-        }
-        albumCommented {
-          _id
-          name
-          artist
+          location
         }
       }
     }
@@ -82,7 +81,7 @@ mutation editComment($commentID: ID!, $commentText: String!){
     postedBy {
       _id
       username
-      email
+      location
     }
     albumCommented {
       _id
@@ -102,7 +101,7 @@ mutation deleteComment($commentID: ID!){
     postedBy {
       _id
       username
-      email
+      location
     }
     albumCommented {
       _id
