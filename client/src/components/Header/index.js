@@ -44,7 +44,7 @@ const Header = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">View Favorites</Dropdown.Item>
+                <Dropdown.Item href="/settings">Settings</Dropdown.Item>
                 <Dropdown.Item onClick={logout}> Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
