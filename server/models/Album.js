@@ -12,8 +12,8 @@ const albumSchema = new Schema({
     artist: {
         type: String
     },
-    genres: {
-        type: [String]
+    genre: {
+        type: String
     },
     comments: [
         {
