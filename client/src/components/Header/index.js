@@ -64,33 +64,33 @@ const Header = () => {
             </Link>
           </form>
 
+            {Auth.loggedIn() ? (
+              <>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Options
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
+                <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+                <Dropdown.Item onClick={logout}> Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+              </>
+            ) : (
+              <>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Options
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/login">Login</Dropdown.Item>
+                <Dropdown.Item href="/signup">Sign Up</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+              </>
+            )}
 
-          {Auth.loggedIn() ? (
-            <>
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Options
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">View Favorites</Dropdown.Item>
-                  <Dropdown.Item onClick={logout}> Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </>
-          ) : (
-            <>
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Options
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="/login">Login</Dropdown.Item>
-                  <Dropdown.Item href="/signup">Sign Up</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </>
-          )}
         </div>
       </div>
     </header>

@@ -6,6 +6,8 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    location: String
+    bio: String
     favorites: [Album]
     comments: [Comment]
   }
@@ -22,6 +24,7 @@ const typeDefs = gql`
     _id: String!
     name: String!
     artist: String
+    genres: [String]
     comments: [Comment]
   }
 
@@ -46,8 +49,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addNewFavorite(albumID: ID): Album
     deleteFavorite(albumID: ID): Album
-    addComment(commentText: String!, commentDate: String!, albumCommented: String): Comment
-    editComment(commentID: ID!, commentText: String!, commentDate: String!): Comment
+    addComment(commentText: String!, albumCommented: String!): Comment
+    editComment(commentID: ID!, commentText: String!): Comment
     deleteComment(commentID: ID!): Comment
   }
 `;
