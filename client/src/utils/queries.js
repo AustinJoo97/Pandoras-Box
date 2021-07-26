@@ -1,35 +1,45 @@
 import { gql } from '@apollo/client';
 
+// Working
 export const QUERY_USERS = gql`
   query users {
     getUsers {
       _id
       username
       email
+      location
+      bio
     }
   }
 `;
 
+// Working
 export const QUERY_USER = gql`
   query user($username: String!) {
-    getUser(username: $username) {
+    getSingleUser(username: $username) {
       _id
       username
       email
+      location
+      bio
     }
   }
 `;
 
+// Requires context.user
 export const QUERY_ME = gql`
   query me {
     me {
       _id
       username
       email
+      location
+      bio
     }
   }
 `;
 
+// Working
 export const QUERY_COMMENTS = gql`
   query comments {
     getComments {
@@ -39,6 +49,7 @@ export const QUERY_COMMENTS = gql`
       postedBy {
         _id
         username
+        location
       }
       albumCommented {
         _id
@@ -49,6 +60,7 @@ export const QUERY_COMMENTS = gql`
   }
 `;
 
+// Requires context.user
 export const QUERY_USER_COMMENTS = gql`
   query comment {
     getUserComments {
@@ -64,52 +76,70 @@ export const QUERY_USER_COMMENTS = gql`
   }
 `;
 
+// Working
 export const QUERY_ALBUMS = gql`
   query albums{
     getAlbums{
       _id
       name
       artist
+      image
+      genre
       comments {
         _id
         commentText
         commentDate
-        postedBy
-        albumCommented
+        postedBy {
+          _id
+          username
+          location
+        }
       }
     }
   }
 `;
 
+// Requires context.user
 export const QUERY_FAVORITE_ALBUMS = gql`
   query favorites{
     getFavoritedAlbums{
       _id
       name
       artist
+      image
+      genre
       comments {
         _id
         commentText
         commentDate
-        postedBy
-        albumCommented
+        postedBy {
+          _id
+          username
+          location
+        }
       }
     }
   }
 `;
 
+// Working
 export const QUERY_SINGLE_ALBUM = gql`
   query singleAlbum($albumID: String!){
-    getSingleAlbum(_id: albumID){
+    getSingleAlbum(albumID: $albumID){
       _id
       name
       artist
+      image
+      genre
       comments {
         _id
         commentText
         commentDate
-        postedBy
-        albumCommented
+        postedBy {
+          _id
+          username
+          location
+        }
       }
     }
   }

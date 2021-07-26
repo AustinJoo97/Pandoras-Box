@@ -21,7 +21,7 @@ const resolvers = {
     },
 
     getComments: async(parent, { apiAlbumID }) => {
-      return Comment.find().populate('postedBy', 'albumCommented', 'artistCommented');
+      return Comment.find().populate('postedBy', 'albumCommented');
     },
 
     getUserComments: async(parent, args, context) => {
@@ -55,7 +55,7 @@ const resolvers = {
     },
 
     getSingleAlbum: async(parent, { albumID }) => {
-      return await Album.findOne({ _id: albumID }).populate('comments');
+      return Album.findOne({ _id: albumID }).populate('comments');
     }
   },
 

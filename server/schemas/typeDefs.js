@@ -6,6 +6,8 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    location: String
+    bio: String
     favorites: [Album]
     comments: [Comment]
   }
@@ -22,6 +24,8 @@ const typeDefs = gql`
     _id: String!
     name: String!
     artist: String
+    image: String
+    genre: String
     comments: [Comment]
   }
 
@@ -38,7 +42,7 @@ const typeDefs = gql`
     getUserComments: [Comment]
     getAlbums: [Album]
     getFavoritedAlbums: [Album]
-    getSingleAlbum(albumID: ID): Album
+    getSingleAlbum(albumID: String): Album
   }
 
   type Mutation {
