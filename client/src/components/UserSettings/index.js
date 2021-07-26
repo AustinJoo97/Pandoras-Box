@@ -14,28 +14,33 @@ import {
 const UserSettings = ({ userDetails }) => {
 
     return (
-    <Col lg={8} className="ml-5 mr-5 mt-5">
-        <Card small className="mb-4 pt-3">
+    <Col lg={8} className="">
+        <Card small className="ml-5 mr-5 mt-5 mb-4 pt-3">
           <Card.Header className="border-bottom text-center">
             <div className="mb-3 mx-auto">
               <img
                 className="rounded-circle"
                 src={userDetails.avatar}
-                alt={Auth.getProfile().data.name}
+                alt={Auth.getProfile().data.username}
                 width="110"
               />
             </div>
-            <h4 className="mb-0">{Auth.getProfile().data.name}</h4>
-            <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
-            <Button pill outline size="sm" className="mb-2">
-              <i className="material-icons mr-1">person_add</i> Follow
-            </Button>
+            <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
+            <span className="text-muted d-block mb-2">{userDetails.location}</span>
           </Card.Header>
-          <ListGroup flush>
+          <Card.Body flush>
             <ListGroupItem className="px-4">
               <div className="progress-wrapper">
                 <strong className="text-muted d-block mb-2">
-                  {userDetails.performanceReportTitle}
+                  <Col>
+                  {userDetails.name}
+                  </Col>
+                  <Col>
+                  <p>
+                    Email :   {userDetails.email}
+                  </p>
+                  
+                  </Col>
                 </strong>
               </div>
             </ListGroupItem>
@@ -45,7 +50,7 @@ const UserSettings = ({ userDetails }) => {
               </strong>
               <span>{userDetails.metaValue}</span>
             </ListGroupItem>
-          </ListGroup>
+          </Card.Body >
         </Card>
     </Col>
     );
@@ -54,9 +59,10 @@ const UserSettings = ({ userDetails }) => {
   //test information
 UserSettings.defaultProps = {
     userDetails: {
-      name: "Sierra Brooks",
+      name: "Brandon Ford",
+      email: "brandonford617@yahoo.com",
       avatar: "https://via.placeholder.com/150",
-      jobTitle: "Project Manager",
+      location: "Ashburn Va",
       performanceReportTitle: "Workload",
       performanceReportValue: 74,
       metaTitle: "Description",
