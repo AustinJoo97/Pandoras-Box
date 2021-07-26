@@ -60,7 +60,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="relative">
-          {}
           <Header/>
           <div className=" mx-auto w-full ">
             <Route exact path="/">
@@ -90,7 +89,7 @@ function App() {
             <Route path="/signup">
               <Signup />
             </Route>
-            
+
             <Route exact path="/artist">
               <Artist />
             </Route>

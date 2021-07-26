@@ -50,3 +50,11 @@
 .forgot-password a {
   color: #167bff;
 }
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.pl-2 {
+    padding-left: 2em !important;
+}
