@@ -3,11 +3,14 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID!
+    firstName: String!
+    lastName: String!
     username: String!
     email: String!
     password: String!
     location: String
     bio: String
+    proPic: String
     favorites: [Album]
     comments: [Comment]
   }
@@ -46,7 +49,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(fistName: String!, lastName: String!, username: String!, email: String!, password: String!, location: String, bio: String, proPic: String): Auth
     login(email: String!, password: String!): Auth
     addNewFavorite(albumID: ID): Album
     deleteFavorite(albumID: ID): Album
