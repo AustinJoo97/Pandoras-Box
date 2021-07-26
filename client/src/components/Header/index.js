@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { HiSearch } from "react-icons/hi"
+import { GiBoxTrap } from "react-icons/gi"
 import Dropdown from 'react-bootstrap/Dropdown'
 
-// import PopulateSearchResults from '../SearchResultsDetails';
+// pages
 import ShowSearchScreen from '../../pages/Search'
 
+// utils
 import Auth from '../../utils/auth';
+import '../../styles/Header.css';
 
 
 const Header = () => {
@@ -29,67 +32,78 @@ const Header = () => {
   return (
     <header className="p-3 mb-3 border-bottom">
       <div className="container">
-        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start row">
 
-          <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-            <h3>Pandoras Box</h3>
+          {/* Site Logo */}
+          <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none col-5">
+            <GiBoxTrap className="display-2"></GiBoxTrap>
+            <h3 className="display-4">Pandoras Box</h3>
           </a>
 
-          {/* genre drop down menu */}
-          <Dropdown className="col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <Dropdown.Toggle variant="info" id="dropdown-basic">
-              Categories
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="/">Rap</Dropdown.Item>
-              <Dropdown.Item href="/">Country</Dropdown.Item>
-              <Dropdown.Item href="/">Hip-Hop</Dropdown.Item>
-              <Dropdown.Item href="/">Folk</Dropdown.Item>
-              <Dropdown.Item href="/">R&B</Dropdown.Item>
-              <Dropdown.Item href="/">Techno</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          {/* search */}
+          <div className="col-6">
+            <div className="search-bar">
+              {/* genre drop down menu */}
+              <Dropdown className="">
+                <Dropdown.Toggle variant="info" id="dropdown-basic">
+                  Search by Categories
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/">Rap</Dropdown.Item>
+                  <Dropdown.Item href="/">Country</Dropdown.Item>
+                  <Dropdown.Item href="/">Hip-Hop</Dropdown.Item>
+                  <Dropdown.Item href="/">Folk</Dropdown.Item>
+                  <Dropdown.Item href="/">R&B</Dropdown.Item>
+                  <Dropdown.Item href="/">Techno</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
 
 
-          {/* search bar */}
-          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="search" className="form-control" placeholder="Search..." aria-label="Search"
-                onChange={(e) => setSearch(e.target.value)}
-            ></input>
-            <Link 
-              to="/search"
-              onClick={() => querySearchButton()}>
-              <HiSearch />
+              {/* search bar */}
+              <form className="col-6">
+                <input type="search" className="form-control" placeholder="Search by Artist" aria-label="Search"
+                  onChange={(e) => setSearch(e.target.value)}
+                ></input>
 
-            </Link>
-          </form>
+                {/* search button */}
+              </form>
+                <Link
+                  className="col-1"
+                  to="/search"
+                  onClick={() => querySearchButton()}>
+                  <HiSearch />
 
-            {Auth.loggedIn() ? (
-              <>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Options
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
-                <Dropdown.Item href="/settings">Settings</Dropdown.Item>
-                <Dropdown.Item onClick={logout}> Logout</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-              </>
-            ) : (
-              <>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Options
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/login">Login</Dropdown.Item>
-                <Dropdown.Item href="/signup">Sign Up</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-              </>
-            )}
+                </Link>
+            </div>
+          </div>
+
+          {/* profile drop down menu */}
+          {Auth.loggedIn() ? (
+            <>
+              <Dropdown className="col-1">
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Options
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
+                  <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+                  <Dropdown.Item onClick={logout}> Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </>
+          ) : (
+            <>
+              <Dropdown className="col-1">
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Options
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/login">Login</Dropdown.Item>
+                  <Dropdown.Item href="/signup">Sign Up</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </>
+          )}
 
         </div>
       </div>
