@@ -10,12 +10,14 @@ import {
     Form,
     Button,
     Container,
+    Card,
 } from "react-bootstrap";
 
 
 const SettingsUpdate = () => {
   const [formState, setFormState] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     username: '',
     email: '',
     password: '',
@@ -44,6 +46,7 @@ const SettingsUpdate = () => {
       });
 
       Auth.login(data.updateUser.token);
+
     } catch (e) {
       console.error(e);
     }
@@ -57,10 +60,38 @@ const SettingsUpdate = () => {
           Success! You may now head
         </p>
       ) : (
+        <Card>
+        <Card.Body>
         <Form onSubmit={handleFormSubmit} >
             <Row >
               {/* Name */}
               <Col lg={6} className="form-group">
+                <Form.Group className="mb-2">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
+                    id="feFirstName"
+                    placeholder="First Name"
+                    name="firstName"
+                    type="text"
+                    value={formState.firstName}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col lg={6} className="form-group">
+                <Form.Group className="mb-2">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    id="feLastName"
+                    placeholder="Name"
+                    name="lastName"
+                    type="text"
+                    value={formState.lastName}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              {/* <Col lg={6} className="form-group">
                 <Form.Group className="mb-2">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
@@ -72,9 +103,9 @@ const SettingsUpdate = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col>
+              </Col> */}
               {/* Username */}
-              <Col lg={6} className="form-group">
+              <Col lg={12} className="form-group">
                 <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
@@ -166,12 +197,15 @@ const SettingsUpdate = () => {
               Update Profile
             </Button>
         </Form>
-      )}
-
-      {error && (
-        <Container className="my-3 p-3 bg-danger text-white">
+        </Card.Body>
+        
+        {error && (
+        <Card.Footer className="my-2 mx-2 p-4 bg-danger text-white">
           {error.message}
-        </Container>
+        </Card.Footer>
+      )}
+      
+        </Card>
       )}
     </Col>
     );

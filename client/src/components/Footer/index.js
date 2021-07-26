@@ -21,7 +21,12 @@ const Footer = () => {
           Pandoras Box © 2021 Ltd. Arr. | Ashquinn Gordon, Austin Joo, Brandon Ford, Forest Wilson 
 
         </span>
-        <button  className="btn float-right-custom text-white" onClick={() => history.goForward()} > Go Forward &rarr;  </button>
+        <button
+          className="btn float-right-custom text-white" 
+          onClick={() => history.goForward()}
+        >
+          Go Forward &rarr;  
+        </button>
       </div>
     </footer>
   );

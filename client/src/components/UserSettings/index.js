@@ -33,11 +33,13 @@ const UserSettings = ({ userDetails }) => {
               <div className="progress-wrapper">
                 <strong className="text-muted d-block mb-2">
                   <Col>
-                  {userDetails.name}
+                  <p>
+                    Name :  {userDetails.name}
+                  </p>
                   </Col>
                   <Col>
                   <p>
-                    Email :   {userDetails.email}
+                    Email :  {userDetails.email}
                   </p>
                   
                   </Col>
@@ -57,7 +59,7 @@ const UserSettings = ({ userDetails }) => {
   };
 
   //test information
-UserSettings.defaultProps = {
+  UserSettings.defaultProps = {
     userDetails: {
       name: "Brandon Ford",
       email: "brandonford617@yahoo.com",
@@ -70,6 +72,19 @@ UserSettings.defaultProps = {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
     }
   };
+
+
+  // UserSettings.defaultProps = {
+  //   userDetails: {
+  //     name: Auth.getProfile().data.name,
+  //     email: Auth.getProfile().data.email,
+  //     avatar: "https://via.placeholder.com/150",
+  //     location: Auth.getProfile().data.location,
+  //     metaTitle: "Description",
+  //     metaValue:
+  //     Auth.getProfile().data.bio
+  //   }
+  // };
   
 export default UserSettings;
   
