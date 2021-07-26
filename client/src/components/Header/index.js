@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { HiSearch } from "react-icons/hi"
+import { HiSearch, HiUser, HiOutlineCake } from "react-icons/hi"
 import { GiBoxTrap } from "react-icons/gi"
 import Dropdown from 'react-bootstrap/Dropdown'
 
@@ -45,7 +45,7 @@ const Header = () => {
             <div className="search-bar">
               {/* genre drop down menu */}
               <Dropdown className="">
-                <Dropdown.Toggle variant="info" id="dropdown-basic">
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
                   Search by Categories
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
@@ -81,8 +81,9 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>
               <Dropdown className="col-1">
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Options
+                <Dropdown.Toggle variant="info" id="dropdown-basic" className="menu-trigger">
+                  <HiOutlineCake />
+                  {Auth.getProfile().data.username}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="/me">{Auth.getProfile().data.username}'s profile</Dropdown.Item>
@@ -94,8 +95,9 @@ const Header = () => {
           ) : (
             <>
               <Dropdown className="col-1">
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Options
+                <Dropdown.Toggle variant="info" id="dropdown-basic">
+                  <HiUser />
+                  Log-in
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="/login">Login</Dropdown.Item>

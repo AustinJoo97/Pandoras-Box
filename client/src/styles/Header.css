@@ -13,3 +13,10 @@
     height: 35px;
     width: 35px;
 }
+
+#dropdown-basic > svg {
+    display: flex;
+    margin: 0 auto;
+    height: 40px;
+    width: 40px;
+}
