@@ -83,7 +83,8 @@ export const QUERY_ALBUMS = gql`
       _id
       name
       artist
-      genres
+      image
+      genre
       comments {
         _id
         commentText
@@ -105,7 +106,8 @@ export const QUERY_FAVORITE_ALBUMS = gql`
       _id
       name
       artist
-      genres
+      image
+      genre
       comments {
         _id
         commentText
@@ -120,13 +122,14 @@ export const QUERY_FAVORITE_ALBUMS = gql`
   }
 `;
 
-// 
+// Working
 export const QUERY_SINGLE_ALBUM = gql`
   query singleAlbum($albumID: String!){
-    getSingleAlbum(_id: albumID){
+    getSingleAlbum(albumID: $albumID){
       _id
       name
       artist
+      image
       genre
       comments {
         _id

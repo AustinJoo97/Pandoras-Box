@@ -33,7 +33,8 @@ export const ADD_NEW_FAVORITE = gql`
       _id
       name
       artist
-      genres
+      image
+      genre
       comments {
         _id
         commentText
