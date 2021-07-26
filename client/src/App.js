@@ -18,6 +18,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import UpdateUser from './pages/UpdateUser';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./styles/login-signup.css";
 
 
 // Construct our main GraphQL API endpoint
@@ -51,9 +52,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="">
+        <div className="relative">
+          {}
           <Header/>
-          <div className="">
+          <div className=" mx-auto w-full ">
             <Route exact path="/">
               <Home />
             </Route>
@@ -70,16 +72,16 @@ function App() {
               <UpdateUser />
             </Route>
 
-            <Route exact path="/login">
+            <Route exact path="/test">
+              <Artist />
+            </Route>
+
+            <Route path="/login">
               <Login />
             </Route>
 
-            <Route exact path="/signup">
+            <Route path="/signup">
               <Signup />
-            </Route>
-
-            <Route exact path="/test">
-              <Artist />
             </Route>
           </div>
           <Footer />

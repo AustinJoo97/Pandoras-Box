@@ -9,6 +9,10 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
+  if (window.location.pathname === '/login') return null;
+  if (window.location.pathname === '/signup') return null;
+
   return (
     <header className="p-3 mb-3 border-bottom">
       <div className="container">

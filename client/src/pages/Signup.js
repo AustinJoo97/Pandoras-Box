@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import {
+  Form,
+  Button,
+  Container,
+
+} from "react-bootstrap";
+
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -38,61 +45,86 @@ const Signup = () => {
   };
 
   return (
-    <main className="">
-      <div className="">
-        <div className="">
-          <h4 className="">Sign Up</h4>
-          <div className="">
+          <div className="mt-5">
             {data ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
+              <div className="auth-wrapper">
+                <div className="auth-inner">
+                <Form onSubmit={handleFormSubmit}>
+                  <h3>Sign Up</h3>
+                  <Form.Group>
+                    <label>Name</label>
+                    <Form.Control
+                      className="form-input"
+                      placeholder="Your Name"
+                      name="name"
+                      type="text"
+                      value={formState.name}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mt-2">
+                    <label>Username</label>
+                    <Form.Control
+                      label="Username"
+                      className="form-input"
+                      placeholder="Your username"
+                      name="username"
+                      type="text"
+                      value={formState.username}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mt-2">
+                    <label>Email address</label>
+                    <Form.Control
+                    className="form-input"
+                    placeholder="Your Email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mt-2">
+                    <label>Password</label>
+                    <Form.Control
+                    className="form-input"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                    />
+                  </Form.Group>
+                  <Button
+                    className="btn btn-success w-100 btn-block mt-4"
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >
+                    Sign up!
+                  </Button>
+                  <p className="forgot-password text-right">
+                      Would you like to <a href="/login">login</a> instead?
+                  </p>
+                  <p className="forgot-password text-right">
+                      or return to <a href="/">home</a>
+                  </p>
+                </Form>
+                </div>
+              </div>
             )}
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <Container className="my-3 p-3 bg-danger text-white">
                 {error.message}
-              </div>
+              </Container>
             )}
           </div>
-        </div>
-      </div>
-    </main>
   );
 };
 

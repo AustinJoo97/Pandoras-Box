@@ -9,7 +9,6 @@ import {
   Card,
   ListGroup,
   Row,
- 
   Container
 } from "react-bootstrap";
 
@@ -44,7 +43,6 @@ const UpdateUser = ({ userDetails }) => {
 
   return (
     <Container fluid="sm">
-      
       <Card small className="mb-4">
         <Card.Header className="border-bottom">
           <h6 className="m-0">{user.username}'s Profile</h6>

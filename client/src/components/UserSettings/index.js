@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Auth from '../../utils/auth';
+
 import {
     Card,
     ListGroup,
@@ -12,18 +14,18 @@ import {
 const UserSettings = ({ userDetails }) => {
 
     return (
-    <Col xs={2} md={4} lg={6}>
+    <Col lg={8} className="ml-5 mr-5 mt-5">
         <Card small className="mb-4 pt-3">
           <Card.Header className="border-bottom text-center">
             <div className="mb-3 mx-auto">
               <img
                 className="rounded-circle"
                 src={userDetails.avatar}
-                alt={userDetails.name}
+                alt={Auth.getProfile().data.name}
                 width="110"
               />
             </div>
-            <h4 className="mb-0">{userDetails.name}</h4>
+            <h4 className="mb-0">{Auth.getProfile().data.name}</h4>
             <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
             <Button pill outline size="sm" className="mb-2">
               <i className="material-icons mr-1">person_add</i> Follow
@@ -53,7 +55,7 @@ const UserSettings = ({ userDetails }) => {
 UserSettings.defaultProps = {
     userDetails: {
       name: "Sierra Brooks",
-      avatar: "",
+      avatar: "https://via.placeholder.com/150",
       jobTitle: "Project Manager",
       performanceReportTitle: "Workload",
       performanceReportValue: 74,

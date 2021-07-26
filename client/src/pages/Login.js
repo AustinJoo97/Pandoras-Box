@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
+import {
+  Form,
+  Button,
+  Container,
+
+} from "react-bootstrap";
 
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -43,42 +49,55 @@ const Login = (props) => {
   };
 
   return (
-    <main className="">
-      <div className="">
-        <div className="">
-          <h4 className="">Login</h4>
-          <div className="">
+          <div className="mt-5">
             {data ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
+              <div className="auth-wrapper">
+                <div className="auth-inner">
+                  <Form onSubmit={handleFormSubmit}>
+                    <h3 className="">Login</h3>
+                    <Form.Group>
+                      <label>Email address</label>
+                      <Form.Control
+                        className="form-input"
+                        placeholder="Your email"
+                        name="email"
+                        type="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mt-2">
+                      <label>Password</label>
+                      <Form.Control
+                        className="form-input"
+                        placeholder="******"
+                        name="password"
+                        type="password"
+                        value={formState.password}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    <Button
+                      className="btn w-100 btn-success btn-block mt-4"
+                      style={{ cursor: 'pointer' }}
+                      type="submit"
+                    >
+                      Login!
+                    </Button>
+                    <p className="forgot-password text-right">
+                        Would you like to <a href="/signup">sign up</a> instead?
+                    </p>
+                    <p className="forgot-password text-right">
+                      or return to <a href="/">home</a>
+                    </p>
+                  </Form>
+                </div>
+              </div>
             )}
 
             {error && (
@@ -87,9 +106,6 @@ const Login = (props) => {
               </div>
             )}
           </div>
-        </div>
-      </div>
-    </main>
   );
 };
 
