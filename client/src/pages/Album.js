@@ -1,7 +1,7 @@
 import ViewAlbum from '../components/DisplayAlbumView';
 
 const sampData = {
-    artistName: "The beatles",
+    artistName: "The Beatles",
     artistId: "125246",
     img: "https://i.kym-cdn.com/photos/images/newsfeed/001/513/412/84b.jpg",
     bio: "I'm baby kitsch disrupt vaporware chia banh mi umami. Viral tumeric vice coloring book irony everyday carry yr jean shorts affogato migas you probably haven't heard of them. Banh mi coloring book everyday carry thundercats cloud bread hoodie church-key semiotics asymmetrical sustainable venmo keffiyeh typewriter bushwick. Activated charcoal kogi locavore viral intelligentsia keffiyeh affogato blog tacos adaptogen butcher cray. Mixtape VHS +1, man bun schlitz try-hard bitters intelligentsia. Poke copper mug synth, trust fund fanny pack hammock chicharrones kale chips shaman yr leggings. Asymmetrical banjo blog kitsch pork belly. Tbh brunch edison bulb fashion axe craft beer prism occupy poke migas vaporware squid hell of. +1 cliche semiotics 8-bit. Vape crucifix flannel craft beer, cold-pressed hexagon everyday carry af taiyaki coloring book hoodie pickled cliche. Hoodie food truck tofu normcore mlkshk whatever vexillologist microdosing hammock farm-to-table lyft.",
@@ -14,14 +14,18 @@ const sampData = {
     ],
     albums: [
         {
-            title: "yellow submarine",
+            title: "Yellow Submarine",
             albumId: "e89hrishd",
+            releaseType: "Album",
             year: "1967",
             img: "https://images-na.ssl-images-amazon.com/images/I/91IaG%2BLrzmL._SX522_.jpg",
+            genres: [
+                "rock", "pop-rock", "psychadelic-rock"
+            ],
             popularity: "59",
             description: "I'm baby selfies affogato poutine, hoodie small batch vexillologist schlitz sartorial mixtape. Gentrify ullamco asymmetrical bicycle rights health goth etsy in tbh. Leggings hammock messenger bag sunt drinking vinegar kinfolk duis chicharrones aesthetic lorem fingerstache. 90's kombucha quinoa synth health goth. Woke magna hella biodiesel tote bag",
             songs: [
-                "we", "all", "live", "in", "the", "yellow", "submarine"
+                "Yellow Submarine", "Only A Northern Song", "All Together Now", "Hey Bulldog", "It's All Too Much", "All You Need Is Love", "Pepperland", "Sea Of Time", "Sea Of Holes", "Sea Of Monsters", "March Of The Meanies", "Pepperland Laid Waste", "Yellow Submarine In Pepperland"
             ]
         },
         {
