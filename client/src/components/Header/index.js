@@ -4,12 +4,6 @@ import { HiSearch, HiUser, HiOutlineCake } from "react-icons/hi"
 import { GiBoxTrap } from "react-icons/gi"
 import Dropdown from 'react-bootstrap/Dropdown'
 
-import {
-  Row,
-  Col,
-  Form,
-
-} from "react-bootstrap";
 
 // pages
 import ShowSearchScreen from '../../pages/Search'
@@ -28,8 +22,8 @@ const Header = () => {
   };
 
   //if on login or signup page, don't render the header
-  if (window.location.pathname === '/login') return null;
-  if (window.location.pathname === '/signup') return null;
+  // if (window.location.pathname === '/login') return null;
+  // if (window.location.pathname === '/signup') return null;
   // used to grab query from search bar, pass to seach page
   const querySearchButton = () => {
     console.log(searchVal);
