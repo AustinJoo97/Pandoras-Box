@@ -1,25 +1,14 @@
 import React from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+// import { useLocation, useHistory } from 'react-router-dom';
+
+
 
 const Footer = () => {
-  const location = useLocation();
-  const history = useHistory();
   return (
-    <footer className="">
-      <div className="">
-        {location.pathname !== '/' && (
-          <button
-            className="btn"
-            onClick={() => history.goBack()}
-          >
-            &larr; Go Back
-          </button>
-        )}
-        <span>
+    <footer className="bottom col-12 mt-5 text-white bg-dark">
+        <span className="btn col-12 text-white disabled">
           Pandoras Box © 2021 Ltd. Arr. | Ashquinn Gordon, Austin Joo, Brandon Ford, Forest Wilson 
-
         </span>
-      </div>
     </footer>
   );
 };

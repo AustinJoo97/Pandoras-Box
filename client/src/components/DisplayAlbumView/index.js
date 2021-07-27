@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsChatDots, BsHeart } from "react-icons/bs"
-
+import { Container, Col, Card, Row, Button} from "react-bootstrap";
 
 import '../../styles/AlbumPage.css';
 
@@ -30,35 +30,45 @@ const ViewAlbum = ({ album, artist }) => {
             <div>
                 <span>{idx + 1}. </span>
                 <p>{track}</p>
-            </div>
+            </div> 
         ))
     }
 
     return (
-        <section id="album">
-            <div className="row d-flex">
+        <Container id="album">
+            <Row className="d-flex">
 
-                <article id="albumHero" className="row justify-content-md-around">
+                <Row id="albumHero" className="justify-content-md-around">
 
                     {/* album cover, icons, and fav/comments stats */}
-                    <section className="col-4 justify-content-center art-card">
-                        <img src={album.img} alt={album.title}></img>
-                        <div>
-                            <span>0 favorites </span>
-                            <span>0 comments</span>
-                        </div>
-                        <div className="icon-bar">
-                            <button>
-                                <BsHeart />
-                            </button>
-                            <button>
-                                <BsChatDots />
-                            </button>
-                        </div>
-                    </section>
+                    <Col lg="4" className=" art-card ">
+                        <Card className="art-card bg-lightblue">
+                            <Card.Body className=" justify-content-center bg-lightblue art-card ">
+                                <Card.Img 
+                                    className="card-img-top"
+                                    src={album.img}
+                                    alt={album.title}
+                                />
+                                
+                                <div className="mt-2">
+                                    <span>0 favorites </span>
+                                    <span>0 comments</span>
+                                </div>
+                                <div className="icon-bar">
+                                    <Button className="mx-1">
+                                        <BsHeart />
+                                    </Button>
+                                    <Button className="mx-1">
+                                        <BsChatDots />
+                                    </Button>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
 
                     {/* album information */}
-                    <section id="albumInfo" className="col-8">
+                    <Col lg="8" id="albumInfo">
+                        
                         <h3 id="albumTitle" className="">{album.title}</h3>
 
                         <div>
@@ -93,18 +103,18 @@ const ViewAlbum = ({ album, artist }) => {
                             <p>{album.description}</p>
                         </div>
 
-                    </section>
-                </article>
+                    </Col>
+                </Row>
 
                 {/* track list */}
-                <article id="trackList" className="row justify-content-center">
+                <Row id="trackList" className=" justify-content-center mt-5">
                     <section className="col-10">
-                        <h3>Track list</h3>
+                        <h2 className="mx-3">Track list</h2>
                         <TrackList />
                     </section>
-                </article>
-            </div>
-        </section>
+                </Row>
+            </Row>
+        </Container>
     )
 
 }

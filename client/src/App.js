@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // pages
 import Home from './pages/Home';
@@ -23,7 +23,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import UpdateUser from './pages/UpdateUser';
+
+//styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./styles/login-signup.css";
+import "./styles/index.css";
 
 
 
@@ -53,14 +57,26 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// paths:
+// /
+// /me
+// /profiles/:username
+// /settings
+// /login
+// /signup
+// /artists/:artistId
+// /albums/:albumId
+// /search/:query
+
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="">
+        <div className="Site relative">
+          {}
           <Header/>
-          <div className="">
+          <div className="Site-content mx-auto w-full ">
             <Route exact path="/">
               <Home />
             </Route>
@@ -77,14 +93,18 @@ function App() {
               <UpdateUser />
             </Route>
 
-            <Route exact path="/login">
+            <Route exact path="/test">
+              <Artist />
+            </Route>
+
+            <Route path="/login">
               <Login />
             </Route>
 
-            <Route exact path="/signup">
+            <Route path="/signup">
               <Signup />
             </Route>
-
+            
             <Route exact path="/artist">
               <Artist />
             </Route>

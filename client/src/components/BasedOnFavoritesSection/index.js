@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card} from "react-bootstrap";
+import { Container, Card, Col} from "react-bootstrap";
 import Slider from "react-slick";
 
 // Import css files
@@ -22,103 +22,221 @@ const settings = {
           <Container>
             
               <h3
-                className="p-5 float-right"
+                className="p-3 pl-2 pt-5 float-right"
               >
               Based On Your Favorites !
               </h3>
               <Slider {...settings}> 
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
-                  </Card>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card className="mx-3">
+                        <Card.Body className="p-0">
+                            <div className="embed-responsive">
+                            <Card.Img
+                              className="card-img-top embed-responsive-item"
+                              variant="Top"
+                              name="songName"
+                              src="https://via.placeholder.com/150"
+                            />
+                            </div>
+                        </Card.Body>
+                        <Card.Footer>
+                            <p>
+                            Song Title
+                            </p>
+                        </Card.Footer>
+                    </Card>
+                  </Col>
               </Slider>
             
           </Container>
           )
         }
-
+     //Above condition is only for test, the return below will be modeled from the template above
         return (
           <Container>
+          <Col>
             <h3
-              className="p-5 display-inline-block"
-              style={{ borderBottom: '1px dotted #1a1a1a' }}
+              className="p-3 pl-2 pt-5 float-right"
             >
-            Based On Your Favorites !
+            Your Favorites Tracks !
             </h3>
-            <Slider {...settings}>
-                {songs.map((song) => (
-                  <Card key={song._id}>
-                  <Card.Img
-                    variant="Top"
-                    src={song.poster_path}
-                  />
-                  <Card.Body>
-                    {song.title}
-                    {song.info}
-                  </Card.Body>
-                </Card>
-                ))}
-            </Slider>
-          </Container>
+              <Slider {...settings}> 
+                  {songs.map((song) => (
+                      <Col>
+                          <Card className="mr-3" key={song._id}>
+                              <Card.Body className="p-0">
+                                  <div className="embed-responsive">
+                                  <Card.Img
+                                    className="card-img-top embed-responsive-item"
+                                    variant="Top"
+                                    name="songName"
+                                    src={song.poster_path}
+                                  />
+                                  </div>
+                              </Card.Body>
+                              <Card.Footer>
+                                  <p>
+                                  {song.title}
+                                  </p>
+                              </Card.Footer>
+                          </Card>
+                      </Col>
+                  ))}
+              </Slider>
+          </Col>
+      </Container>
         );
       };
 

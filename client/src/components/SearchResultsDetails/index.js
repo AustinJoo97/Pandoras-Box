@@ -46,6 +46,7 @@ const PopulateSearchResults = ({ queryResults, queryType }) => {
     }
 
     return (
+
         <div className="row justify-content-start">
             <ShowResults type={queryType} />
         </div>
