@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import '../../styles/ArtistPage.css';
+import '../../styles/SearchPage.css';
 
 
 const PopulateSearchResults = ({ queryResults }) => {
@@ -25,7 +25,9 @@ const PopulateSearchResults = ({ queryResults }) => {
     }
 
     return (
-        <ShowResults />
+        <div className="search-results row">
+            <ShowResults />
+        </div>
     )
 }
 

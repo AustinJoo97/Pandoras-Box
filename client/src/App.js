@@ -57,6 +57,17 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// paths:
+// /
+// /me
+// /profiles/:username
+// /settings
+// /login
+// /signup
+// /artists/:artistId
+// /albums/:albumId
+// /search/:query
+
 
 function App() {
   return (
