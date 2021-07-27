@@ -4,7 +4,6 @@ import { HiSearch, HiUser, HiOutlineCake } from "react-icons/hi"
 import { GiBoxTrap } from "react-icons/gi"
 import Dropdown from 'react-bootstrap/Dropdown'
 
-<<<<<<< HEAD
 import {
   Row,
   Col,
@@ -12,10 +11,7 @@ import {
 
 } from "react-bootstrap";
 
-// import PopulateSearchResults from '../SearchResultsDetails';
-=======
 // pages
->>>>>>> 58eba0faddb7d345b98c9c46d4a5e8926a822ae5
 import ShowSearchScreen from '../../pages/Search'
 
 // utils
