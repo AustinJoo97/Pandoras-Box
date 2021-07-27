@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row} from "react-bootstrap";
 import PopulateSearchResults from '../components/SearchResultsDetails';
 
 const sampAlbums = [
@@ -143,10 +144,11 @@ const ShowSearchScreen = ({ query }) => {
     // store response as variable, pass into populate seach results component
 
     return(
-        <section id="searchResults" className="row">
-            <PopulateSearchResults queryResults={sampAlbums} />
-
-        </section>
+        <Container id="searchResults">
+          <Row>
+          <PopulateSearchResults queryResults={sampAlbums} />
+          </Row>
+        </Container>
     )
 }
 

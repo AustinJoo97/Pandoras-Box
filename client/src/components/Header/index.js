@@ -34,14 +34,14 @@ const Header = () => {
   }
 
   return (
-    <header className="p-3 mb-3 border-bottom">
+    <header className="p-3 mb-5 border-bottom">
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start row">
 
           {/* Site Logo */}
-          <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none col-5">
+          <a href="/" id="logo" className="d-flex align-items-center mb-2 mb-lg-0 text-grey text-decoration-none col-5">
             <GiBoxTrap className="display-2"></GiBoxTrap>
-            <h3 className="display-4">Pandoras Box</h3>
+            <h3 className="display-4 ">Pandoras Box</h3>
           </a>
 
           {/* search */}
@@ -49,7 +49,7 @@ const Header = () => {
             <div className="search-bar">
               {/* genre drop down menu */}
               <Dropdown className="">
-                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                <Dropdown.Toggle variant="" id="dropdown-basic" className="menu-trigger bg-lightblue">
                   Search by Categories
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
@@ -85,7 +85,7 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>
               <Dropdown className="col-1">
-                <Dropdown.Toggle variant="info" id="dropdown-basic" className="menu-trigger">
+                <Dropdown.Toggle variant="" id="dropdown-basic" className="menu-trigger bg-lightblue">
                   <HiOutlineCake />
                   {Auth.getProfile().data.username}
                 </Dropdown.Toggle>
@@ -99,7 +99,7 @@ const Header = () => {
           ) : (
             <>
               <Dropdown className="col-1">
-                <Dropdown.Toggle variant="info" id="dropdown-basic">
+                <Dropdown.Toggle variant="" id="dropdown-basic" className="menu-trigger bg-lightblue">
                   <HiUser />
                   Log-in
                 </Dropdown.Toggle>
