@@ -8,10 +8,10 @@ const ViewArtist = ({ artist }) => {
     const ShowAlbums = () => {
         if (artist.albums.length) {
             return artist.albums.map(album => (
-                <div id="albumCard" className="col-4">
+                <div className="col-3 albumCard">
                     <img src={album.img} alt={album.title}></img>
-                    <h3 className="">{album.title}</h3>
-                    <p>Year released: {album.year}</p>
+                    <span className="">{album.title}</span>
+                    <span> - {album.year}</span>
                     <p>Album popularity: {album.popularity}</p>
                 </div>
             ))
@@ -20,20 +20,25 @@ const ViewArtist = ({ artist }) => {
         return <p>nothing found here</p>;
     }
 
-    // display artist and return albums
+    
     return(
         <section id="artist">
             <div className="row">
+
+                {/* artist info */}
                 <article id="artistProfile" className="col-4">
                     <img src={artist.img} alt="the beebles"></img>
                     <h2 className="display-3">{artist.artistName}</h2>
                     <p className="text-muted"> {artist.bio}</p>
                     <p>Artist popularity: {artist.popularity}</p>
                 </article>
-                <article className="col-8">
-                    <div className="row">
+
+                {/* artist discography */}
+                <article className="col-8 discography">
+                    <h2>{artist.artistName}'s discography</h2>
+                    <section className="row">
                         <ShowAlbums />
-                    </div>
+                    </section>
                 </article>
                 
                 
