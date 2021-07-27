@@ -13,6 +13,19 @@ export const ADD_USER = gql`
   }
 `;
 
+// 
+export const UPDATE_USER = gql`
+  mutation updateUser($firstName: String!, $lastName: String!,  $username: String!, $email: String!, $password: String! , $location: String! , $bio: String! ) {
+    updateUser(firstName: $firstName, lastName: $lastName, username: $username, email: $email, password: $password, location: $location, bio: $bio) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 // Working
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {

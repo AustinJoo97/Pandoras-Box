@@ -4,11 +4,20 @@ import { HiSearch, HiUser, HiOutlineCake } from "react-icons/hi"
 import { GiBoxTrap } from "react-icons/gi"
 import Dropdown from 'react-bootstrap/Dropdown'
 
+import {
+  Row,
+  Col,
+  Form,
+
+} from "react-bootstrap";
+
+// pages
+import ShowSearchScreen from '../../pages/Search'
+
 
 // utils
 import Auth from '../../utils/auth';
 import '../../styles/Header.css';
-
 
 
 const Header = () => {
@@ -19,8 +28,10 @@ const Header = () => {
     Auth.logout();
   };
 
+
   // IF user types in a search, then when they click the search button, it will set search value and type within link redirect
   // IF user clicks genre, then it will set link to redirect to "/search/q="genreName"&type="genre".
+
 
   return (
     <header className="p-3 mb-3 border-bottom">
@@ -42,6 +53,7 @@ const Header = () => {
                   Search by Categories
                 </Dropdown.Toggle>
 
+
                 {/* will ideally be populated via api call and map */}
                 <Dropdown.Menu>
                   <Dropdown.Item href={`/search?q=rap&type=genre`}>Rap</Dropdown.Item>
@@ -54,11 +66,13 @@ const Header = () => {
               </Dropdown>
 
 
+
               {/* search bar, sets state = our search value */}
               <form className="col-6">
                 <input type="search" className="form-control" placeholder="Search by Artist" aria-label="Search"
                   onChange={(e) => setSearch(e.target.value)}
                 ></input>
+
               </form>
 
               {/* search button, takes state and constructs our params */}

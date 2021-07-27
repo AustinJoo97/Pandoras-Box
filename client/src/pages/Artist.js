@@ -3,7 +3,7 @@
 // import { QUERY_ARTIST } from '../utils/queries';
 
 import ViewArtist from '../components/DisplayArtistView';
-import ViewAlbum from '../components/DisplayAlbumView';
+// import ViewAlbum from '../components/DisplayAlbumView';
 
 
 const sampData = {
