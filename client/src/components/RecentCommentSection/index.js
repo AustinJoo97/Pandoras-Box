@@ -108,7 +108,7 @@ const settings = {
             </Container>
           )
         }
-        //return will be changed for recent comment once data comes in 
+     //Above condition is only for test, the return below will be modeled from the template above
         return (
           <Container>
             <h3
