@@ -5,10 +5,12 @@ export const QUERY_USERS = gql`
   query users {
     getUsers {
       _id
+      name
       username
       email
       location
       bio
+      proPic
     }
   }
 `;
@@ -31,10 +33,12 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
+      name
       username
       email
       location
       bio
+      proPic
     }
   }
 `;
