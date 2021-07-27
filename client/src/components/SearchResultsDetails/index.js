@@ -3,30 +3,51 @@ import { Link } from 'react-router-dom'
 import '../../styles/SearchPage.css';
 
 
-const PopulateSearchResults = ({ queryResults }) => {
+const PopulateSearchResults = ({ queryResults, queryType }) => {
     // some management of how results will display here
 
-    const ShowResults = () => {
+    const ShowResults = ({ type }) => {
 
-        return queryResults.map(album => (
-            <div id="albumCard" className="col-2">
+        // if type "artist", return artist cards
+        if (type === "artist") {
 
-                {/* Link will probably redirect to "/albums/{album.albumID}" */}
-                <Link to="/album">
-                    <img src={album.img} alt={album.title}></img>
-                    <h3 className="">{album.title}</h3>
-                    <p>Year released: {album.year}</p>
-                    <p>Album popularity: {album.popularity}</p>
-                </Link>
-            </div>
-        ))
+            return queryResults.artists.items.map(artist => (
+                <div key={artist.id} className="album-card col-2">
+                    <h6>{artist.type}</h6>
+                    <Link to={`/artist?q=${artist.id}`}>
+                        <img src={artist.images[0].url} alt="hi"></img>
+                    </Link>
+                    <h3>{artist.name}</h3>
+                    <p>{artist.popularity}/100</p>
+                    <p>{artist.followers.total} Followers</p>
+                </div>
+            ))
 
+            // if type "album", return album cards
+        } else if (type === "album") {
+
+            return queryResults.items.map(album => (
+                <div key={album.id} className="album-card col-2">
+                    <Link to={`/album?q=${album.id}`}>
+                        <img src={album.images[0].url} alt="hi"></img>
+                    </Link>
+                    <h3 className="">{album.name}</h3>
+                    <p>Year released: {album.release_date}</p>
+                    <p>Total tracks: {album.total_tracks}</p>
+                </div>
+            ))
+
+        } else {
+            return (
+                <h2>genre search WIP</h2>
+            )
+        }
 
     }
 
     return (
-        <div className="search-results row">
-            <ShowResults />
+        <div className="row justify-content-start">
+            <ShowResults type={queryType} />
         </div>
     )
 }
