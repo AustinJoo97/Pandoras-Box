@@ -23,14 +23,14 @@ const ShowSearchScreen = (props) => {
 
 
   return (
-    <article>
+    <Container>
       <span className="show-query">Search results for {searchQuery}</span>
-      <section id="searchResults" className="">
+      <Row id="searchResults" className="">
         <PopulateSearchResults queryResults={response} queryType={searchType} />
         {/* <p>{query}</p> */}
         {/* <p>{type}</p> */}
-      </section>
-    </article>
+      </Row>
+    </Container>
   )
 }
 
