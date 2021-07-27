@@ -22,15 +22,6 @@ const Header = () => {
     Auth.logout();
   };
 
-<<<<<<< HEAD
-  //if on login or signup page, don't render the header
-  // if (window.location.pathname === '/login') return null;
-  // if (window.location.pathname === '/signup') return null;
-  // used to grab query from search bar, pass to seach page
-  const querySearchButton = () => {
-    console.log(searchVal);
-=======
->>>>>>> e2775cb625e5bee9997e66351ef2324e6e6a1096
 
   // IF user types in a search, then when they click the search button, it will set search value and type within link redirect
   // IF user clicks genre, then it will set link to redirect to "/search/q="genreName"&type="genre".

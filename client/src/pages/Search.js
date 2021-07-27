@@ -10,15 +10,6 @@ const artistsQuery = artistSearchSampleData;
 
 const ShowSearchScreen = (props) => {
 
-<<<<<<< HEAD
-    return(
-        <Container id="searchResults">
-          <Row>
-          <PopulateSearchResults queryResults={sampAlbums} />
-          </Row>
-        </Container>
-    )
-=======
   // get query information from URL
   const params = new URLSearchParams(window.location.search);
   const searchQuery = params.get('q')
@@ -41,7 +32,6 @@ const ShowSearchScreen = (props) => {
       </section>
     </article>
   )
->>>>>>> e2775cb625e5bee9997e66351ef2324e6e6a1096
 }
 
 export default ShowSearchScreen;
