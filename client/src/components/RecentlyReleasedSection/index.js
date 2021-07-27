@@ -19,80 +19,187 @@ const settings = {
 
         if (!songs.length) {
           return (
-          <Container>
-            <Col>
-              <h3
-                className="p-5 float-right"
-              >
-              Recently Releases Tracks !
-              </h3>
-              <Slider {...settings}> 
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+            <Container>
+            
+            <h3
+              className="p-3 pl-2 pt-5  float-right"
+            >
+            Recently Released !
+            </h3>
+            <Slider {...settings}> 
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-                  <Card>
-                    <Card.Img
-                      variant="Top"
-                      src="https://via.placeholder.com/150"
-                    />
-                    <Card.Body>This is test info</Card.Body>
+                </Col>
+                <Col>
+                  <Card className="mx-3">
+                      <Card.Body className="p-0">
+                          <div className="embed-responsive">
+                          <Card.Img
+                            className="card-img-top embed-responsive-item"
+                            variant="Top"
+                            name="songName"
+                            src="https://via.placeholder.com/150"
+                          />
+                          </div>
+                      </Card.Body>
+                      <Card.Footer>
+                          <p>
+                          Song Title
+                          </p>
+                      </Card.Footer>
                   </Card>
-              </Slider>
-            </Col>
-          </Container>
+                </Col>
+            </Slider>
+        </Container>
           )
         }
 

@@ -15,7 +15,7 @@ const settings = {
     slidesToScroll: 1
   };
 
-    const RecentComments = ({ songs = [] }) => {
+    const YourRecentComments = ({ songs = [] }) => {
 
         if (!songs.length) {
           return (
@@ -24,7 +24,7 @@ const settings = {
               <h3
                 className="p-3 pl-2 pt-5  float-right"
               >
-              Recent Comments !
+              Your Recent Comments !
               </h3>
                 <Slider {...settings}>    
                     <Col>    
@@ -135,4 +135,4 @@ const settings = {
         );
       };
 
-export default RecentComments;
+export default YourRecentComments;

@@ -11,18 +11,18 @@ const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 3,
     slidesToScroll: 1
   };
 
-    const YourFavorites = ({ songs = [] }) => {
+    const YourFavoritesMin = ({ songs = [] }) => {
 
         if (!songs.length) {
           return (
           <Container>
             <Col>
               <h3
-                className="p-3 pl-2 pt-5  float-right"
+                className="p-3 pt-5 float-right"
               >
               Your Favorites Tracks !
               </h3>
@@ -297,4 +297,4 @@ const settings = {
         );
       };
 
-export default YourFavorites;
+export default YourFavoritesMin;
