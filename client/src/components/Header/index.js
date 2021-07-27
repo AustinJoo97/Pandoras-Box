@@ -14,6 +14,7 @@ import {
 // pages
 import ShowSearchScreen from '../../pages/Search'
 
+
 // utils
 import Auth from '../../utils/auth';
 import '../../styles/Header.css';
@@ -27,17 +28,10 @@ const Header = () => {
     Auth.logout();
   };
 
-  //if on login or signup page, don't render the header
-  if (window.location.pathname === '/login') return null;
-  if (window.location.pathname === '/signup') return null;
-  // used to grab query from search bar, pass to seach page
-  const querySearchButton = () => {
-    console.log(searchVal);
 
-    return (
-      <ShowSearchScreen query={searchVal} />
-    )
-  }
+  // IF user types in a search, then when they click the search button, it will set search value and type within link redirect
+  // IF user clicks genre, then it will set link to redirect to "/search/q="genreName"&type="genre".
+
 
   return (
     <header className="p-3 mb-3 border-bottom">
@@ -58,31 +52,34 @@ const Header = () => {
                 <Dropdown.Toggle variant="primary" id="dropdown-basic">
                   Search by Categories
                 </Dropdown.Toggle>
+
+
+                {/* will ideally be populated via api call and map */}
                 <Dropdown.Menu>
-                  <Dropdown.Item href="/">Rap</Dropdown.Item>
-                  <Dropdown.Item href="/">Country</Dropdown.Item>
-                  <Dropdown.Item href="/">Hip-Hop</Dropdown.Item>
-                  <Dropdown.Item href="/">Folk</Dropdown.Item>
-                  <Dropdown.Item href="/">R&B</Dropdown.Item>
-                  <Dropdown.Item href="/">Techno</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=rap&type=genre`}>Rap</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=country&type=genre`}>Country</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=hip-hop&type=genre`}>Hip-Hop</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=folk&type=genre`}>Folk</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=randb&type=genre`}>R&B</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=techno&type=genre`}>Techno</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
 
 
-              {/* search bar */}
+
+              {/* search bar, sets state = our search value */}
               <form className="col-6">
                 <input type="search" className="form-control" placeholder="Search by Artist" aria-label="Search"
                   onChange={(e) => setSearch(e.target.value)}
                 ></input>
 
-                {/* search button */}
               </form>
+
+              {/* search button, takes state and constructs our params */}
                 <Link
                   className="col-1"
-                  to="/search"
-                  onClick={() => querySearchButton()}>
+                  to={`/search?q=${searchVal}&type=artist`}>
                   <HiSearch />
-
                 </Link>
             </div>
           </div>
