@@ -2,9 +2,9 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import BasedOnFavorites from '../components/BasedOnFavoritesSection';
+import YourRecentComments from '../components/YourRecentComments';
 
-
+import YourFavoritesMin from '../components/YourFavoritesSectionMin';
 
 import {
   Card,
@@ -56,27 +56,34 @@ const Profile = ({ userDetails }) => {
         <ListGroup flush >
           <Row>
             <Col xs={2} md={4} lg={6}>
-              <Card small className="mb-4 pt-3">
-                <Card.Header className="border-bottom text-center">
+              <Card small className="mr-5 mb-4 pt-3">
+                <Card.Header className="border-bottom bg-white text-center">
                   <div className="mb-3 mx-auto">
                     <img
                       className="rounded-circle"
                       src={userDetails.avatar}
-                      alt={userDetails.name}
+                      alt={Auth.getProfile().data.username}
                       width="110"
                     />
                   </div>
-                  <h4 className="mb-0">{userDetails.name}</h4>
-                  <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
-                  <Button pill outline size="sm" className="mb-2">
-                    <i className="material-icons mr-1">person_add</i> Follow
-                  </Button>
+                  <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
+                  <span className="text-muted d-block mb-2">{userDetails.location}</span>
                 </Card.Header>
-                <ListGroup flush>
+                <Card.Body flush>
                   <ListGroupItem className="px-4">
                     <div className="progress-wrapper">
                       <strong className="text-muted d-block mb-2">
-                        {userDetails.performanceReportTitle}
+                        <Col>
+                        <p>
+                          Name :  {userDetails.name}
+                        </p>
+                        </Col>
+                        <Col>
+                        <p>
+                          Email :  {userDetails.email}
+                        </p>
+
+                        </Col>
                       </strong>
                     </div>
                   </ListGroupItem>
@@ -86,15 +93,13 @@ const Profile = ({ userDetails }) => {
                     </strong>
                     <span>{userDetails.metaValue}</span>
                   </ListGroupItem>
-                </ListGroup>
+                </Card.Body >
               </Card>
             </Col>
             <Col xs={2} md={4} lg={6}>
-              <BasedOnFavorites />
+              <YourFavoritesMin />
             </Col>
-            <BasedOnFavorites />
-            <BasedOnFavorites />
-            <BasedOnFavorites />
+            <YourRecentComments />
           </Row>
         </ListGroup>
       </Card>
@@ -104,9 +109,10 @@ const Profile = ({ userDetails }) => {
 
 Profile.defaultProps = {
   userDetails: {
-    name: "Sierra Brooks",
-    avatar: "",
-    jobTitle: "Project Manager",
+    name: "Brandon Ford",
+    email: "brandonford617@yahoo.com",
+    avatar: "https://via.placeholder.com/150",
+    location: "Ashburn Va",
     performanceReportTitle: "Workload",
     performanceReportValue: 74,
     metaTitle: "Description",

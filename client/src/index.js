@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './reset.css';
+
+import 'normalize.css'; // css reset for react
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
