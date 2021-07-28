@@ -14,7 +14,6 @@ import Auth from '../utils/auth';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    name: '',
     username: '',
     email: '',
     password: '',
@@ -57,28 +56,6 @@ const Signup = () => {
                 <div className="auth-inner">
                 <Form onSubmit={handleFormSubmit}>
                   <h3>Sign Up</h3>
-                  <Form.Group>
-                    <label>First Name</label>
-                    <Form.Control
-                      className="form-input"
-                      placeholder="First Name"
-                      name="first name"
-                      type="text"
-                      value={formState.first_name}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <label>Last Name</label>
-                    <Form.Control
-                      className="form-input"
-                      placeholder="Last Name"
-                      name="last name"
-                      type="text"
-                      value={formState.last_name}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
                   <Form.Group className="mt-2">
                     <label>Username</label>
                     <Form.Control
@@ -120,11 +97,8 @@ const Signup = () => {
                   >
                     Sign up!
                   </Button>
-                  <p className="forgot-password text-right">
+                  <p className="forgot-password text-right mt-2">
                       Would you like to <a href="/login">login</a> instead?
-                  </p>
-                  <p className="forgot-password text-right">
-                      or return to <a href="/">home</a>
                   </p>
                 </Form>
                 </div>

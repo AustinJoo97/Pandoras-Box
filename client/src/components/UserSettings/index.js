@@ -13,8 +13,8 @@ const UserSettings = ({ userDetails }) => {
 
     return (
     <Col lg={8} className="">
-        <Card small className="ml-5 mr-5 mt-5 mb-4 pt-3">
-          <Card.Header className="border-bottom text-center">
+        <Card small className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
+          <Card.Header className="text-center bg-lightblue settingsHeader">
             <div className="mb-3 mx-auto">
               <img
                 className="rounded-circle"
@@ -24,7 +24,7 @@ const UserSettings = ({ userDetails }) => {
               />
             </div>
             <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
-            <span className="text-muted d-block mb-2">{userDetails.location}</span>
+            <span className="d-block mb-2">{userDetails.location}</span>
           </Card.Header>
           <Card.Body flush>
             <ListGroupItem className="px-4">

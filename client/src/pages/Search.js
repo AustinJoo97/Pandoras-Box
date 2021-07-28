@@ -24,7 +24,7 @@ const ShowSearchScreen = (props) => {
 
   return (
     <Container>
-      <span className="show-query">Search results for {searchQuery}</span>
+      <h2 className="show-query">Search results for {searchQuery}</h2>
       <Row id="searchResults" className="">
         <PopulateSearchResults queryResults={response} queryType={searchType} />
         {/* <p>{query}</p> */}
