@@ -13,8 +13,8 @@ const UserSettings = ({ userDetails }) => {
 
     return (
     <Col lg={8} className="">
-        <Card small className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
-          <Card.Header className="text-center bg-lightblue settingsHeader">
+        <Card className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
+          <Card.Header className="text-center  settingsHeader">
             <div className="mb-3 mx-auto">
               <img
                 className="rounded-circle"
@@ -26,29 +26,29 @@ const UserSettings = ({ userDetails }) => {
             <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
             <span className="d-block mb-2">{userDetails.location}</span>
           </Card.Header>
-          <Card.Body>
-            <ListGroupItem className="px-4">
+          <Card.Body className="settingsBody">
+            <ListGroupItem className="px-4 ">
               <div className="progress-wrapper">
                 <strong className="text-muted d-block mb-2">
                   <Col>
-                  <p>
+                  <h3>
                     Name :  {userDetails.name}
-                  </p>
+                  </h3>
                   </Col>
                   <Col>
-                  <p>
+                  <h3>
                     Email :  {userDetails.email}
-                  </p>
+                  </h3>
                   
                   </Col>
                 </strong>
               </div>
             </ListGroupItem>
             <ListGroupItem className="p-4">
-              <strong className="text-muted d-block mb-2">
+              <h3 className="text-muted d-block mb-2">
                 {userDetails.metaTitle}
-              </strong>
-              <span>{userDetails.metaValue}</span>
+              </h3>
+              <h3>{userDetails.metaValue}</h3>
             </ListGroupItem>
           </Card.Body >
         </Card>

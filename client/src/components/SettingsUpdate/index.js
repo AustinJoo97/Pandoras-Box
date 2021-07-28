@@ -59,8 +59,8 @@ const SettingsUpdate = () => {
           Success! You may now head
         </p>
       ) : (
-        <Card>
-        <Card.Body>
+        <Card className="settingsCard">
+        <Card.Body className="">
         <Form onSubmit={handleFormSubmit} >
             <Row >
               {/* Name */}
@@ -91,7 +91,7 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row form>
+            <Row>
               {/* Email */}
               <Col lg={12} className="form-group">
                 <Form.Group className="mb-2">
@@ -123,7 +123,7 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row form>
+            <Row>
               {/* Location */}
               <Col lg={6} className="form-group">
                 <Form.Group className="mb-2">
@@ -148,18 +148,21 @@ const SettingsUpdate = () => {
               </Col>
             </Row>
 
-            <Row form>
+            <Row>
               {/* Description */}
               <Col md="12" className="form-group">
                 <Form.Group className="mb-2">
                   <Form.Label>Profile Description</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      placeholder="Leave a comment here"
-                      style={{ height: '100px' }}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
+                  <Form.Control
+                    id="feDescription"
+                    as="textarea"
+                    name="bio"
+                    placeholder="Leave a description here"
+                    value={formState.bio}
+                    style={{ height: '100px' }}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
               </Col>
             </Row>
             <Button

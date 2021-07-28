@@ -56,9 +56,32 @@ const PopulateSearchResults = ({ queryResults, queryType }) => {
                         </Card>
                     </Link>
                 </Col>
-                
             ))
 
+                        // if type "album", return album cards
+        } else if (type === "album") {
+
+            return queryResults.items.map(album => (
+                 <Col lg="3" key={album.id} className="albumCard">
+                    <Link to={`/album?q=${album.id}`} className="text-decoration-none">
+                        <Card className="mx-3 cardCarousel">
+                            <Card.Body className="albumBody">
+                                <div className="embed-responsive">
+                                    <Card.Img
+                                        className="card-img-top embed-responsive-item"
+                                        src={album.images[0].url}
+                                        alt="hi"
+                                    />
+                                </div>
+                                <h3 className="">{album.name}</h3>
+                                <p>Year released: {album.release_date}</p>
+                                <p>Total tracks: {album.total_tracks}</p>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </Col>
+            ))
+            
         } else {
             return (
                 <h2>genre search WIP</h2>
