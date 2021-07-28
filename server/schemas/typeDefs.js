@@ -27,7 +27,7 @@ const typeDefs = gql`
     name: String!
     artist: String
     image: String
-    genres: [String]
+    genre: String
     comments: [Comment]
   }
 
