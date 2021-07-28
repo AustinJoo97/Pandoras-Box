@@ -15,8 +15,7 @@ import {
 
 const SettingsUpdate = () => {
   const [formState, setFormState] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     username: '',
     email: '',
     password: '',
@@ -66,32 +65,6 @@ const SettingsUpdate = () => {
               {/* Name */}
               <Col lg={6} className="form-group">
                 <Form.Group className="mb-2">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control
-                    id="feFirstName"
-                    placeholder="First Name"
-                    name="firstName"
-                    type="text"
-                    value={formState.firstName}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-              </Col>
-              <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    id="feLastName"
-                    placeholder="Name"
-                    name="lastName"
-                    type="text"
-                    value={formState.lastName}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-              </Col>
-              {/* <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     id="feName"
@@ -102,7 +75,7 @@ const SettingsUpdate = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col> */}
+              </Col>
               {/* Username */}
               <Col lg={12} className="form-group">
                 <Form.Group controlId="formFile" className="mb-2">
