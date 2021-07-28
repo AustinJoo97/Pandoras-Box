@@ -77,7 +77,7 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
               {/* Username */}
-              <Col lg={12} className="form-group">
+              <Col lg={6} className="form-group">
                 <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
