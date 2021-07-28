@@ -15,8 +15,8 @@ export const ADD_USER = gql`
 
 // 
 export const UPDATE_USER = gql`
-  mutation updateUser($firstName: String!, $lastName: String!,  $username: String!, $email: String!, $password: String! , $location: String! , $bio: String! ) {
-    updateUser(firstName: $firstName, lastName: $lastName, username: $username, email: $email, password: $password, location: $location, bio: $bio) {
+  mutation updateUser($name: String, $username: String!, $email: String!, $password: String, $location: String, $bio: String, $proPic: String) {
+    updateUser(name: $name, username: $username, email: $email, password: $password, location: $location, bio: $bio, proPic: $proPic) {
       token
       user {
         _id
@@ -44,18 +44,22 @@ export const ADD_NEW_FAVORITE = gql`
   mutation addFavorite($albumID: String!){
     addNewFavorite(albumID: $albumID){
       _id
-      name
-      artist
-      image
-      genre
-      comments {
+      username
+      favorites {
         _id
-        commentText
-        commentDate
-        postedBy {
+        name
+        artist
+        image
+        genre
+        comments {
           _id
-          username
-          location
+          commentText
+          commentDate
+          postedBy {
+            _id
+            username
+            location
+          }
         }
       }
     }
@@ -66,7 +70,24 @@ export const DELETE_FAVORITE = gql`
   mutation deleteFavorite($albumID: String!){
     deleteFavorite(albumID: $albumID){
       _id
-      name
+      username
+      favorites {
+        _id
+        name
+        artist
+        image
+        genre
+        comments {
+          _id
+          commentText
+          commentDate
+          postedBy {
+            _id
+            username
+            location
+          }
+        }
+      }
     }
   }
 `;

@@ -15,13 +15,13 @@ import {
 
 const SettingsUpdate = () => {
   const [formState, setFormState] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     username: '',
     email: '',
     password: '',
     location: '',
     bio: '',
+    proPic: '',
   });
 
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);

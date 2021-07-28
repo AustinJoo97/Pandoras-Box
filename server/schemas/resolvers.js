@@ -60,10 +60,27 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { firstName, lastName, username, email, password, location, bio, proPic }) => {
-      const user = await User.create({ firstName, lastName, username, email, password, location, bio, proPic });
+    addUser: async (parent, { name, username, email, password, location, bio, proPic }) => {
+      const user = await User.create({ name, username, email, password, location, bio, proPic });
       const token = signToken(user);
       return { token, user };
+    },
+
+    updateUser: async (parent, { name, username, email, password, location, bio, proPic }) => {
+      const user = await User.findByIdAndUpdate(
+        { username: username},
+        { $set : {
+          name,
+          username,
+          email,
+          password,
+          location,
+          bio,
+          proPic
+        }},
+        {new: true}
+      )
+      return user;
     },
 
     login: async (parent, { email, password }) => {
@@ -84,25 +101,22 @@ const resolvers = {
       return { token, user };
     },
 
-    addNewFavorite: async (parent, { albumID }, context) => {
-      if (context.user) {
-        const newFavorite = await Album.findOne({_id: albumID})
+    addNewFavorite: async (parent, { albumID }) => {
+      const newFavorite = await Album.findOne({_id: albumID})
 
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          {
-            $addToSet: {favorites: newFavorite}
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        {
+          $addToSet: {favorites: newFavorite}
+        },
+        { new: true }
+      );
     },
 
     deleteFavorite: async (parent, { albumID }, context) => {
-      if (context.user) {
+      if(context.user) {
         const userData = await User.findOne({ _id: context.user._id }).populate('favorites');
-
+  
         userData.favorites.map((album) => {
           if(album._id === albumID){
             return User.findOneAndUpdate(
@@ -115,18 +129,17 @@ const resolvers = {
           }
         })
       }
-      throw new AuthenticationError('You need to be logged in!');
     },
 
     addComment: async (parent, { commentText, albumCommented}, context) => {
-      if (context.user) {
+      if(context.user){
         const userData = await User.findOne({ _id: context.user._id }).populate('comments');
         const newComment = await Comment.create({ 
           commentText,
           postedBy: userData,
           albumCommented, 
         })
-
+  
         return Album.findOneAndUpdate(
           { _id: albumCommented },
           {
@@ -134,20 +147,16 @@ const resolvers = {
           },
           { new: true }
         )
-
       }
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    editComment: async (parent, { commentID, commentText, commentDate }, context) => {
-      if (context.user) {
-        return Comment.findOneAndUpdate(
-          {_id: commentID},
-          { $set : {commentText: commentText}},
-          { new: true }
-        )
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    editComment: async (parent, { commentID, commentText}) => {
+      return Comment.findOneAndUpdate(
+        {_id: commentID},
+        { $set : {commentText: commentText}},
+        { new: true }
+      )
     },
 
     deleteComment: async (parent, { commentID }, context) => {
