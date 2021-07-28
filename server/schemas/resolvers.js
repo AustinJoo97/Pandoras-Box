@@ -60,10 +60,29 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { firstName, lastName, username, email, password, location, bio, proPic }) => {
-      const user = await User.create({ firstName, lastName, username, email, password, location, bio, proPic });
+    addUser: async (parent, { name, username, email, password, location, bio, proPic }) => {
+      const user = await User.create({ name, username, email, password, location, bio, proPic });
       const token = signToken(user);
       return { token, user };
+    },
+
+    updateUser: async (parent, { name, username, email, password, location, bio, proPic }, context) => {
+      const user = await User.findByIdAndUpdate(
+        { username: username},
+        { $set : {
+          name,
+          username,
+          email,
+          password,
+          location,
+          bio,
+          proPic
+        }},
+        {new: true}
+      )
+
+      const token = signToekn(user);
+      return { token, user }
     },
 
     login: async (parent, { email, password }) => {
