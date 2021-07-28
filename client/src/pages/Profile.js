@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import YourRecentComments from '../components/YourRecentComments';
 import UserSettings from '../components/UserSettings';
@@ -16,7 +16,8 @@ import {
   Container
 } from "react-bootstrap";
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME, QUERY_USER_COMMENTS, QUERY_FAVORITE_ALBUMS } from '../utils/queries';
+import { UPDATE_USER, DELETE_FAVORITE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const albumsQuery = artistAlbumsSampleData;
@@ -29,13 +30,28 @@ const Profile = ({ userDetails }) => {
     variables: { username: userParam },
   });
 
+  const { loadingUserComments, userCommentData } = useQuery(QUERY_USER_COMMENTS);
+
+  const { loadingFavoriteAlbums, favoriteAlbumsData } = useQuery(QUERY_FAVORITE_ALBUMS);
+
+  const [ updateUser, { error }] = useMutation(UPDATE_USER);
+
+  const [ deleteFavorite, { error } ] = useMutation(DELETE_FAVORITE);
+
   // redirect to personal profile page if username is yours
   const user = data?.me || data?.user || {};
+
+  let userComments;
+  loadingUserComments ? console.log('Still loading user comments!') : userComments = userCommentData;
+
+  let favoriteAlbums;
+  loadingFavoriteAlbums ? console.log('Still loading favorite!') : favoriteAlbums = favoriteAlbumsData;
+
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/me" />;
   }
 
-  if (loading) {
+  if (loading || loadingUserComments || loadingFavoriteAlbums) {
     return <div>Loading...</div>;
   }
 
