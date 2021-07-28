@@ -15,9 +15,13 @@ html, body {
     color: rgb(151, 151, 151);
 }
 
+.settingsHeader {
+    background-color: #b4b4b4;
+}
+
 .settingsHeader h4 {
     font-size: 25px;
-    color: rgb(26, 24, 0);
+    color: rgb(255, 234, 0);
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.616);
 }
 
@@ -27,6 +31,14 @@ html, body {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.616);
 }
 
-/* .settingsCard {
-    background-color:
-} */
+.settingsCard {
+    background-color: rgb(168, 168, 168); 
+}
+
+.settingsBody h3 {
+    color: black;
+}
+
+.bg-lightblue-dull {
+    background-color: rgba(184, 215, 255, 0.877);
+}

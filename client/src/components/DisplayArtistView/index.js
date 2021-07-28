@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Container, Col, Card, Row, Button} from "react-bootstrap";
+import { Container, Col, Card, Row} from "react-bootstrap";
 import '../../styles/ArtistPage.css';
 
 

@@ -43,16 +43,18 @@ const UpdateUser = ({ userDetails }) => {
 
   return (
     <Container>
-      <Card className="mb-4">
+      <Card className="mb-4 bg-lightblue-dull">
         <Card.Header className="border-bottom">
           <h6 className="m-0">{user.username}'s Profile Settings</h6>
         </Card.Header>
-        <ListGroup>
-          <Row>
-          <UserSettings />
-          <SettingsUpdate />
-          </Row>
-        </ListGroup>
+        <Card.Body>
+          <ListGroup>
+            <Row>
+            <UserSettings />
+            <SettingsUpdate />
+            </Row>
+          </ListGroup>
+        </Card.Body>
       </Card>
     </Container>
   );
