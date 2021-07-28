@@ -50,6 +50,7 @@
 }
 
 .albumCard img {
+    border: 3px solid rgb(132, 185, 255);;
     display: block;
 }
 

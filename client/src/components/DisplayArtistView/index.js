@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Container, Col, Card, Row, Button} from "react-bootstrap";
 import '../../styles/ArtistPage.css';
 
@@ -10,21 +11,21 @@ const ViewArtist = ({ artist }) => {
         if (artist.albums.length) {
             return artist.albums.map(album => (
                 <Col lg="3" className="albumCard">
-                    <Card className="mx-3 cardCarousel">
-                        <Card.Body className="albumBody">
-                            <div className="embed-responsive">
-                                <Card.Img
-                                    className="card-img-top embed-responsive-item"
-                                    src={album.img}
-                                    variant="Top"
-                                    alt={album.title}
-                                />
-                            </div>
-                            <h4 className="">{album.title}</h4>
-                            <span> - {album.year}</span>
-                            <p>Album popularity: {album.popularity}</p>
-                        </Card.Body>
-                    </Card>
+                    <Link to={`/album?q=${album.id}`} className="text-decoration-none">
+                        <Card className="mx-3 cardCarousel">
+                            <Card.Body className="albumBody">
+                                <div className="embed-responsive">
+                                    <Card.Img
+                                        className="card-img-top embed-responsive-item"
+                                        src={album.img}
+                                    />
+                                </div>
+                                <h4 className="">{album.title}</h4>
+                                <span> - {album.year}</span>
+                                <p>Album popularity: {album.popularity}</p>
+                            </Card.Body>
+                        </Card>
+                    </Link>
                 </Col>
             ))
         }
