@@ -77,6 +77,7 @@ const getTokenThenArtists = async (artistName) => {
 //    return data.artists
 };
 
+ // Get token from spotify then call `getArtistAlbums` to return albums based on artistID.
 const getTokenThenArtistAlbums = async (artistID) => {
     const params = new URLSearchParams();
     params.append("grant_type", "client_credentials");
@@ -111,39 +112,43 @@ const getTokenThenArtistAlbums = async (artistID) => {
 //    return data.items
 };
 
-// const getTokenThenSingleAlbumDetails = async (albumID) => {
-//     const params = new URLSearchParams();
-//     params.append("grant_type", "client_credentials");
+ // Get token from spotify then call `getSingleAlbumDetails` to return the album details of a single ablum (requires album ID).
+const getTokenThenSingleAlbumDetails = async (albumID) => {
+    const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials");
   
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded",
-//         Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
-//       },
-//     };
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
+      },
+    };
   
-//     const res = await axios.post(
-//       "https://accounts.spotify.com/api/token",
-//       params,
-//       config
-//     );
+    const res = await axios.post(
+      "https://accounts.spotify.com/api/token",
+      params,
+      config
+    );
   
-//     getSingleAlbumDetails(res.data.access_token, albumID);
-// };
+    getSingleAlbumDetails(res.data.access_token, albumID);
+};
 
-// export const getSingleAlbumDetails = async (token, albumID) => {
-//     const { data } = await axios.get(
-//      `https://api.spotify.com/v1/albums/${albumID}?market=US`,
-//      {
-//        method: "GET",
-//        headers: { Authorization: "Bearer " + token },
-//      }
-//    );
+const getSingleAlbumDetails = async (token, albumID) => {
+    const { data } = await axios.get(
+     `https://api.spotify.com/v1/albums/${albumID}?market=US`,
+     {
+       method: "GET",
+       headers: { Authorization: "Bearer " + token },
+     }
+   );
  
-//      console.log(data)
-// };
+     console.log(data)
+};
 
 
+
+// ---- CALLS USED FOR TESTING FUNCTIONS!! ----
 // getTokenThenAlbumGenres('hiphop')
 // getTokenThenArtists('Drake')
 // getTokenThenArtistAlbums('0TnOYISbd1XYRBk9myaseg')
+// getTokenThenSingleAlbumDetails('4aawyAB9vmqN3uQ7FjRGTy')
