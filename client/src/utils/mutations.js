@@ -50,7 +50,7 @@ export const ADD_NEW_FAVORITE = gql`
         name
         artist
         image
-        genre
+        genres
         comments {
           _id
           commentText
@@ -76,7 +76,7 @@ export const DELETE_FAVORITE = gql`
         name
         artist
         image
-        genre
+        genres
         comments {
           _id
           commentText
