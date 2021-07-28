@@ -21,6 +21,7 @@ const SettingsUpdate = () => {
     password: '',
     location: '',
     bio: '',
+    proPic: '',
   });
 
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);
