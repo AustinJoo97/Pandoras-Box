@@ -16,7 +16,7 @@ const PopulateSearchResults = ({ queryResults, queryType }) => {
                 <Col lg="3" key={artist.id} className="albumCard">
                     <Link to={`/artist?q=${artist.id}`} className="text-decoration-none">
                         <Card className="mx-3 cardCarousel">
-                            <Card.Body className="albumBody">
+                            <Card.Body className="albumBody ">
                                 <h6>{artist.type}</h6>
                                 <div className="embed-responsive">
                                     <Card.Img

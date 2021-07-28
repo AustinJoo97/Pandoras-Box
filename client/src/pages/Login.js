@@ -86,11 +86,8 @@ const Login = (props) => {
                     >
                       Login!
                     </Button>
-                    <p className="forgot-password text-right">
+                    <p className="forgot-password text-right mt-2">
                         Would you like to <a href="/signup">sign up</a> instead?
-                    </p>
-                    <p className="forgot-password text-right">
-                      or return to <a href="/">home</a>
                     </p>
                   </Form>
                 </div>
