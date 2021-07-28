@@ -20,7 +20,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    getComments: async(parent, { apiAlbumID }) => {
+    getComments: async() => {
       return Comment.find().populate('postedBy', 'albumCommented');
     },
 

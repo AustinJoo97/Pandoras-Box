@@ -1,4 +1,10 @@
 import ViewAlbum from '../components/DisplayAlbumView';
+import { useQuery, useMutation } from '@apollo/client';
+
+import { QUERY_COMMENTS, QUERY_SINGLE_ALBUM } from '../utils/queries';
+import { ADD_NEW_FAVORITE, ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT } from '../utils/mutations';
+
+
 
 const sampData = {
     artistName: "The Beatles",
