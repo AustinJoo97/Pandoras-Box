@@ -26,7 +26,7 @@ const UserSettings = ({ userDetails }) => {
             <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
             <span className="d-block mb-2">{userDetails.location}</span>
           </Card.Header>
-          <Card.Body flush>
+          <Card.Body>
             <ListGroupItem className="px-4">
               <div className="progress-wrapper">
                 <strong className="text-muted d-block mb-2">
