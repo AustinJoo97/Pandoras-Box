@@ -44,18 +44,22 @@ export const ADD_NEW_FAVORITE = gql`
   mutation addFavorite($albumID: String!){
     addNewFavorite(albumID: $albumID){
       _id
-      name
-      artist
-      image
-      genre
-      comments {
+      username
+      favorites {
         _id
-        commentText
-        commentDate
-        postedBy {
+        name
+        artist
+        image
+        genre
+        comments {
           _id
-          username
-          location
+          commentText
+          commentDate
+          postedBy {
+            _id
+            username
+            location
+          }
         }
       }
     }
@@ -66,7 +70,24 @@ export const DELETE_FAVORITE = gql`
   mutation deleteFavorite($albumID: String!){
     deleteFavorite(albumID: $albumID){
       _id
-      name
+      username
+      favorites {
+        _id
+        name
+        artist
+        image
+        genre
+        comments {
+          _id
+          commentText
+          commentDate
+          postedBy {
+            _id
+            username
+            location
+          }
+        }
+      }
     }
   }
 `;
