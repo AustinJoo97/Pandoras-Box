@@ -5,7 +5,7 @@ export default getTwoFavoriteGenres = (userObj) => {
     let secondGenre;
 
     userObj.favorites.map((favoritedAlbum) => {
-        allGenres.concat(favoritedAlbum.genres);
+        allGenres.push(favoritedAlbum.genre);
     })
 
     allGenres.map((genre) => {
@@ -16,30 +16,28 @@ export default getTwoFavoriteGenres = (userObj) => {
         }
     })
 
-    const talliedGenres = Object.keys(favoritesObj);
-
-    for(let i = 0; i < talliedGenres.length; i++){
+    for(let i = 0; i < allGenres.length; i++){
         if(!topGenre && !secondGenre){
             topGenre = {
-                genre: talliedGenres[i],
-                count: favoritesObj[talliedGenres[i]]
+                genre: allGenres[i],
+                count: favoritesObj[allGenres[i]]
             };
             secondGenre = {
-                genre: talliedGenres[i],
-                count: favoritesObj[talliedGenres[i]]
+                genre: allGenres[i],
+                count: favoritesObj[allGenres[i]]
             };
         }
 
-        if(favoritesObj[talliedGenres[i]] >= topGenre.count){
+        if(favoritesObj[allGenres[i]] >= topGenre.count){
             secondGenre = topGenre;
             topGenre = {
-                genre: talliedGenres[i],
-                count: favoritesObj[talliedGenres[i]]
+                genre: allGenres[i],
+                count: favoritesObj[allGenres[i]]
             };
-        } else if(favoritesObj[talliedGenres[i]] < topGenre.count && favoritesObj[talliedGenres[i]] > secondGenre.count){
+        } else if(favoritesObj[allGenres[i]] < topGenre.count && favoritesObj[allGenres[i]] > secondGenre.count){
             secondGenre = {
-                genre: talliedGenres[i],
-                count: favoritesObj[talliedGenres[i]]
+                genre: allGenres[i],
+                count: favoritesObj[allGenres[i]]
             };
         }
     }
