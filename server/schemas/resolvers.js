@@ -67,22 +67,25 @@ const resolvers = {
     },
 
     updateUser: async (parent, { name, username, email, password, location, bio, proPic }, context) => {
-      const user = await User.findByIdAndUpdate(
-        { username: username},
-        { $set : {
-          name,
-          username,
-          email,
-          password,
-          location,
-          bio,
-          proPic
-        }},
-        {new: true}
-      )
-
-      const token = signToekn(user);
-      return { token, user }
+      if(context.user){
+        const user = await User.findByIdAndUpdate(
+          { _id: context.user._id},
+          { $set : {
+            name,
+            username,
+            email,
+            password,
+            location,
+            bio,
+            proPic
+          }},
+          {new: true}
+        )
+  
+        const token = signToken(user);
+        return { token, user }
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     login: async (parent, { email, password }) => {
