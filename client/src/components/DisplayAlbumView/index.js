@@ -1,38 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsChatDots, BsHeart } from "react-icons/bs"
-import { Container, Col, Card, Row, Button} from "react-bootstrap";
+import { Container, Col, Card, Row, Button } from "react-bootstrap";
 
 import '../../styles/AlbumPage.css';
 
+// add all genres
+const DisplayGenres = ({ album }) => {
+    let allGenres = [];
 
-
-const ViewAlbum = ({ album, artist }) => {
-
-    // add all genres
-    const DisplayGenres = () => {
-        let allGenres = [];
-        album.genres.forEach(genre => {
-            if (allGenres.length === 0) {
-                allGenres = genre
-            } else {
-                allGenres += `, ${genre}`;
-            }
-        })
-        return (
-            <p>{allGenres}</p>
-        )
+    if (!album.genres) {
+        return <p>none listed</p>;
     }
 
-    // will most likely itterate a track length as well
-    const TrackList = () => {
-        return album.songs.map((track, idx) => (
-            <div>
-                <span>{idx + 1}. </span>
-                <p>{track}</p>
-            </div> 
-        ))
-    }
+    album.genres.forEach(genre => {
+        if (allGenres.length === 0) {
+            allGenres = genre
+        } else {
+            allGenres += `, ${genre}`;
+        }
+    })
+    return (
+        <p>{allGenres}</p>
+    )
+
+}
+
+// will most likely itterate a track length as well
+const TrackList = ({ album }) => {
+    console.log(album)
+    return album.tracks.items.map((track, idx) => (
+        <div>
+            <span>{idx + 1}. </span>
+            <p>{track.name}</p>
+        </div>
+    ))
+}
+
+const ViewAlbum = ({ album }) => {
+
+    if (!album.artists) return null;
 
     return (
         <Container id="album">
@@ -44,12 +51,13 @@ const ViewAlbum = ({ album, artist }) => {
                     <Col lg="4" className=" art-card ">
                         <Card className="art-card bg-lightblue">
                             <Card.Body className=" justify-content-center bg-lightblue art-card ">
-                                <Card.Img 
+                                <Card.Img
                                     className="card-img-top"
-                                    src={album.img}
-                                    alt={album.title}
+                                    src={album.images[0].url}
+                                    alt={album.name}
+                                    name={album.id}
                                 />
-                                
+
                                 <div className="mt-2">
                                     <span>0 favorites </span>
                                     <span>0 comments</span>
@@ -68,29 +76,29 @@ const ViewAlbum = ({ album, artist }) => {
 
                     {/* album information */}
                     <Col lg="8" id="albumInfo">
-                        
-                        <h3 id="albumTitle" className="">{album.title}</h3>
+
+                        <h3 id="albumTitle" className="">{album.name}</h3>
 
                         <div>
                             <span>Artist:</span>
                             <Link className="artist-link" to="./artist">
-                                <p>{artist}</p>
+                                <p>{album.artists[0].name}</p>
                             </Link>
                         </div>
 
                         <div>
                             <span>Release type:</span>
-                            <p>{album.releaseType}</p>
+                            <p>{album.album_type}</p>
                         </div>
 
                         <div>
-                            <span>Year released:</span>
-                            <p>{album.year}</p>
+                            <span>released:</span>
+                            <p>{album.release_date}</p>
                         </div>
 
                         <div>
                             <span>Genres:</span>
-                            <DisplayGenres />
+                            {/* <DisplayGenres /> */}
                         </div>
 
                         <div>
@@ -99,8 +107,8 @@ const ViewAlbum = ({ album, artist }) => {
                         </div>
 
                         <div>
-                            <span>Description:</span>
-                            <p>{album.description}</p>
+                            <span>Record Label:</span>
+                            <p>{album.label}</p>
                         </div>
 
                     </Col>
@@ -110,7 +118,7 @@ const ViewAlbum = ({ album, artist }) => {
                 <Row id="trackList" className=" justify-content-center mt-5">
                     <section className="col-10">
                         <h2 className="mx-3">Track list</h2>
-                        <TrackList />
+                        <TrackList album={album} />
                     </section>
                 </Row>
             </Row>

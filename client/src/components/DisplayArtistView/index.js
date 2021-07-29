@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { Container, Col, Card, Row} from "react-bootstrap";
 import '../../styles/ArtistPage.css';
 
-
+// not ready
 const ViewArtist = ({ artist }) => {
 
+    
     // map through all albums and create card for them
     const ShowAlbums = () => {
         if (artist.albums.length) {

@@ -6,6 +6,7 @@ const clientId = "10cece6c2f3f4320b2e07f79197c27bb";
 const clientSecret = "aeec5e00e5e44eb99fc43891e89e2c5a";
 
 // Get token from spotify then call `getAlbumGenres` to return albums by genre.
+
 const getTokenThenAlbumGenres = async (genreID) => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
@@ -36,8 +37,10 @@ const getTokenThenAlbumGenres = async (genreID) => {
     return data.albums.items;
   };
 
+
   return getAlbumGenres(res.data.access_token, genreID);
 };
+
 
 // Get token from spotify then call `getArtists` to return artists based on query string.
 const getTokenThenArtists = async (artistName) => {
@@ -149,6 +152,7 @@ const getTokenThenSingleAlbumDetails = async (albumID) => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
 
+
   const config = {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -164,12 +168,14 @@ const getTokenThenSingleAlbumDetails = async (albumID) => {
 
   const getSingleAlbumDetails = async (token, albumID) => {
     const { data } = await axios.get(
+
       `https://api.spotify.com/v1/albums/${albumID}?market=US`,
       {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
       }
     );
+
 
     //  console.log(data)
     return data;
