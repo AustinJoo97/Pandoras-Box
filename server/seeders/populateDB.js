@@ -26,9 +26,10 @@ const getToken = async () => {
     config
   );
 
-  // const body = await res.json();
-  await Album.deleteMany({});
+  // await Album.deleteMany({});
   getGenres(res.data.access_token);
+
+  // return res.data.access_token;
 };
 
 // establish function to get an array of all genres required to get albums to populate DB
@@ -44,11 +45,12 @@ const getGenres = async (token) => {
 
   // PASS IN TOKEN VARIABLE AND GENRE IN ORDER TO MAKE API CALLS
 
-  result.data.categories.items.forEach(async (genre) => {
-    getAlbums(token, genre.id);
+  // console.log(result.data.categories.items);
+  result.data.categories.items.forEach( async (genre) => {
+    await getAlbums(token, genre.id);
   });
 
-  // return genresArray
+  // return result.data.categories.items;
 };
 
 // TOKEN AND GENREID PASSED IN FROM GENRE API CALL
@@ -60,23 +62,36 @@ const getAlbums = async (token, genreID) => {
       headers: { Authorization: "Bearer " + token },
     }
   );
-    // console.log(data.albums)
-    // console.log(data.albums.items[0].images[0].url)
-    // console.log(data.albums.items[0].artists[0].name)
-    
-    // Taking the results from the album search and mapping its properties to the Album database
-    data.albums.items.map(async (album) => {
-      
-      await Album.create(
-        {
-          _id: album.id,
-          name: album.name,
-          artist: album.artists[0].name,
-          genre: genreID,
-          images: album.images[0].url
-        });
-    })
-  return "hi";
+  
+  // Taking the results from the album search and mapping its properties to the Album database
+  data.albums.items.map(async (album) => {
+    await Album.create(
+      {
+        _id: album.id,
+        name: album.name,
+        artist: album.artists[0].name,
+        genre: genreID,
+        images: album.images[0].url
+      });
+  })
+
+  // return;
 };
 
-getToken();
+// getToken();
+
+db.once('open', async () => {
+  await Album.deleteMany({}); 
+
+  // const token = await getToken();
+  // const genres = await getGenres(token);
+  // genres.map( async (genre) => {
+  //   // console.log(genre);
+  //   await getAlbums(token, genre)
+  // })
+
+  await getToken();
+  
+  console.log('all done!');
+  process.exit(0);
+});
