@@ -81,7 +81,7 @@ const ViewAlbum = ({ album }) => {
     };
 
     if (!album.artists) return null;
-
+    console.log(album);
     return (
         <Container id="album">
             <Row className="d-flex">

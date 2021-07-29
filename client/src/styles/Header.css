@@ -36,3 +36,8 @@ h1, h2, h3, h4, h5 {
 .slick-prev:before, .slick-next:before {
     color: rgb(155, 188, 233) ;
 }
+
+.avatar svg {
+    height: 1000px;
+}
+

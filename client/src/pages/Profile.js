@@ -6,6 +6,8 @@ import YourRecentComments from '../components/YourRecentComments';
 import UserSettings from '../components/UserSettings';
 import PopulateCarousel from '../components/Carousel';
 
+import { GiAbstract082, GiAbstract020, GiAbstract041 } from "react-icons/gi";
+
 import { artistAlbumsSampleData, artistSearchSampleData } from '../utils/sampleData';
 import {
   Card,
@@ -62,12 +64,22 @@ const Profile = ({ userDetails }) => {
     );
   }
 
+  const ShowAvatar = ({}) => {
+    if (user.proPic === "GiAbtract82") {
+      return <GiAbstract082 className="avatar" size={120}/>
+    } else if (user.proPic === "GiAbtract20"){
+      return <GiAbstract020 className="avatar" size={120}/>
+    } else {
+      return <GiAbstract041 className="avatar" size={120}/>
+    } 
+  }
+
   return (
     <Container>
       
       <Card className="mb-4 bg-grey">
         <Card.Header className="border-bottom">
-          <h6 className="m-0">{user.username}'s Profile</h6>
+          <h6 className="m-0 profileName text-center">{user.username}'s Profile</h6>
         </Card.Header>
         <Card.Body>
           <ListGroup >
@@ -76,27 +88,22 @@ const Profile = ({ userDetails }) => {
                   <Card className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
                     <Card.Header className="text-center  settingsHeader">
                       <div className="mb-3 mx-auto">
-                        <img
-                          className="rounded-circle"
-                          src={userDetails.avatar}
-                          alt={Auth.getProfile().data.username}
-                          width="110"
-                        />
+                      <ShowAvatar/>
                       </div>
                       <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
-                      <span className="d-block mb-2">{userDetails.location}</span>
+                      <span className="d-block mb-2">{user.location}</span>
                     </Card.Header>
                     <Card.Body className="settingsBody">
                         <div className="progress-wrapper">
                           <strong className="text-muted d-block mb-2 ">
                             <Col>
                             <h3>
-                              Name :  {userDetails.name}
+                              Name :  {user.name}
                             </h3>
                             </Col>
                             <Col>
                             <h3>
-                              Email :  {userDetails.email}
+                              Email :  {user.email}
                             </h3>
                             </Col>
                           </strong>
@@ -104,7 +111,7 @@ const Profile = ({ userDetails }) => {
                         <h3 className="text-muted d-block mb-2">
                           {userDetails.metaTitle}
                         </h3>
-                        <h3>{userDetails.metaValue}</h3>
+                        <h3>{user.bio}</h3>
                     </Card.Body >
                   </Card>
               </Col>
