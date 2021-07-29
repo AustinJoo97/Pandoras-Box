@@ -11,6 +11,9 @@ export const QUERY_USERS = gql`
       location
       bio
       proPic
+      favorites{
+        _id
+      }
     }
   }
 `;
@@ -24,6 +27,9 @@ export const QUERY_USER = gql`
       email
       location
       bio
+      favorites{
+        _id
+      }
     }
   }
 `;
@@ -39,6 +45,9 @@ export const QUERY_ME = gql`
       location
       bio
       proPic
+      favorites{
+        _id
+      }
     }
   }
 `;

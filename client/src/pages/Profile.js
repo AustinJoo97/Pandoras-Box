@@ -26,9 +26,7 @@ import Auth from '../utils/auth';
 const Profile = ({ userDetails }) => {
   const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
-  });
+  const { loading, data } = useQuery(QUERY_ME);
 
   const { loadingUserComments, userCommentData } = useQuery(QUERY_USER_COMMENTS);
 
@@ -64,6 +62,8 @@ const Profile = ({ userDetails }) => {
     );
   }
 
+  const myFavorites = data.me.favorites;
+  
   const ShowAvatar = ({}) => {
     if (user.proPic === "GiAbtract82") {
       return <GiAbstract082 className="avatar" size={120}/>

@@ -47,20 +47,6 @@ export const ADD_NEW_FAVORITE = gql`
       username
       favorites {
         _id
-        name
-        artist
-        image
-        genre
-        comments {
-          _id
-          commentText
-          commentDate
-          postedBy {
-            _id
-            username
-            location
-          }
-        }
       }
     }
   }
@@ -73,20 +59,6 @@ export const DELETE_FAVORITE = gql`
       username
       favorites {
         _id
-        name
-        artist
-        image
-        genre
-        comments {
-          _id
-          commentText
-          commentDate
-          postedBy {
-            _id
-            username
-            location
-          }
-        }
       }
     }
   }
