@@ -51,7 +51,7 @@ const typeDefs = gql`
     addUser(name: String, username: String!, email: String!, password: String!, location: String, bio: String, proPic: String): Auth
     updateUser(name: String, username: String!, email: String!, password: String, location: String, bio: String, proPic: String): Auth
     login(email: String!, password: String!): Auth
-    addNewFavorite(albumID: ID): User
+    addNewFavorite(albumID: String!, name: String!, artist: String, image: String, genre: String): User
     deleteFavorite(albumID: ID): User
     addComment(commentText: String!, albumCommented: String!): Comment
     editComment(commentID: ID!, commentText: String!): Comment

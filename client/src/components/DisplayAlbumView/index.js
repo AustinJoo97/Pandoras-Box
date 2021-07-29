@@ -31,7 +31,6 @@ const DisplayGenres = ({ album }) => {
 
 // will most likely itterate a track length as well
 const TrackList = ({ album }) => {
-    console.log(album)
     return album.tracks.items.map((track, idx) => (
         <div>
             <span>{idx + 1}. </span>
@@ -44,13 +43,35 @@ const ViewAlbum = ({ album }) => {
     const [addNewFavorite, { error }] = useMutation(ADD_NEW_FAVORITE);
 
     const handleAddFavorite = async () => {
-        console.log(album);
+        if(album.genres[0] === undefined && album.genre === undefined){
+            console.log('REDEFINING ALBUM GENRE')
+            album.genre = '';
+        } else {
+            album.genre = album.genres[0].name
+        }
     
+        console.log(album.id, album.name, album.artists[0].name, album.images[0].url, album.genre)
         try {
           const { data } = await addNewFavorite({
             // variables: {...album}
             variables: { 
-                albumID: album.id
+                // albumID: album._id || album.id,
+                albumID: album.id,
+                // 2VBcztE58pBKjIDS5oEgFh
+
+                name: album.name,
+                // Acid Rap
+
+                // artist: album.artist || album.artists[0].name,
+                artist: album.artists[0].name,
+                // Chance the Rapper
+
+                // image: album.image || album.images[0].url,
+                image: album.images[0].url,
+                // https://i.scdn.co/image/ab67616d0000b273d95ab48a8a9de3c4a2cbfe80
+
+                genre: ''
+                // ''
             },
           });
     
@@ -73,9 +94,9 @@ const ViewAlbum = ({ album }) => {
                             <Card.Body className=" justify-content-center bg-lightblue art-card ">
                                 <Card.Img
                                     className="card-img-top"
-                                    src={album.images[0].url}
+                                    src={album.image || album.images[0].url}
                                     alt={album.name}
-                                    name={album.id}
+                                    name={album._id || album.id}
                                 />
 
                                 <div className="mt-2">
@@ -102,8 +123,8 @@ const ViewAlbum = ({ album }) => {
 
                         <div>
                             <span>Artist:</span>
-                            <Link className="artist-link" to={`/artist?q=${album.artists[0].id}`}>
-                                <p>{album.artists[0].name}</p>
+                            <Link className="artist-link" to="./artist">
+                                <p>{album.artist || album.artists[0].name}</p>
                             </Link>
                         </div>
 
