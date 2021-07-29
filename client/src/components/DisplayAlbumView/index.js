@@ -100,17 +100,16 @@ const ViewAlbum = ({ album }) => {
                                 />
 
                                 <div className="mt-2">
-                                    <span>0 favorites </span>
-                                    <span>0 comments</span>
+                                    
                                 </div>
                                 <div className="icon-bar">
                                     <Button className="mx-1">
                                         <BsHeart 
                                         onClick={handleAddFavorite}/>
                                     </Button>
-                                    <Button className="mx-1">
+                                    {/* <Button className="mx-1">
                                         <BsChatDots />
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             </Card.Body>
                         </Card>
@@ -123,7 +122,7 @@ const ViewAlbum = ({ album }) => {
 
                         <div>
                             <span>Artist:</span>
-                            <Link className="artist-link" to="./artist">
+                            <Link className="artist-link" to={`/artist?q=${album.artists[0].id}`}>
                                 <p>{album.artist || album.artists[0].name}</p>
                             </Link>
                         </div>
@@ -139,13 +138,13 @@ const ViewAlbum = ({ album }) => {
                         </div>
 
                         <div>
-                            <span>Genres:</span>
-                            {/* <DisplayGenres /> */}
+                            <span>Total tracks:</span>
+                            <p>{album.tracks.total}</p>
                         </div>
 
                         <div>
                             <span>Album popularity:</span>
-                            <p>{album.popularity}</p>
+                            <p>{album.popularity} / 100</p>
                         </div>
 
                         <div>
@@ -153,6 +152,10 @@ const ViewAlbum = ({ album }) => {
                             <p>{album.label}</p>
                         </div>
 
+
+                        <div>
+                            <h4><a href={album.external_urls.spotify} className="">Listen on Spotify!</a></h4>
+                        </div>
                     </Col>
                 </Row>
 
