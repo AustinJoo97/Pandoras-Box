@@ -18,8 +18,9 @@ const Signup = () => {
     email: '',
     password: '',
   });
+  let userData;
 
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,6 +41,8 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
+
+      userData = data;
     } catch (e) {
       console.error(e);
     }
@@ -47,7 +50,7 @@ const Signup = () => {
 
   return (
           <div className="mt-5">
-            {data ? (
+            {userData ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
