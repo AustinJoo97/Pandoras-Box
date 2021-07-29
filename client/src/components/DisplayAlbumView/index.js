@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsChatDots, BsHeart } from "react-icons/bs"
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
+import { useMutation } from '@apollo/client';
 
 import '../../styles/AlbumPage.css';
+
+import { ADD_NEW_FAVORITE } from '../../utils/mutations';
 
 // add all genres
 const DisplayGenres = ({ album }) => {
@@ -38,6 +41,23 @@ const TrackList = ({ album }) => {
 }
 
 const ViewAlbum = ({ album }) => {
+    const [addNewFavorite, { error }] = useMutation(ADD_NEW_FAVORITE);
+
+    const handleAddFavorite = async () => {
+        console.log(album);
+    
+        try {
+          const { data } = await addNewFavorite({
+            // variables: {...album}
+            variables: { 
+                albumID: album.id
+            },
+          });
+    
+        } catch (e) {
+          console.error(e);
+        }
+    };
 
     if (!album.artists) return null;
 
@@ -64,7 +84,8 @@ const ViewAlbum = ({ album }) => {
                                 </div>
                                 <div className="icon-bar">
                                     <Button className="mx-1">
-                                        <BsHeart />
+                                        <BsHeart 
+                                        onClick={handleAddFavorite}/>
                                     </Button>
                                     <Button className="mx-1">
                                         <BsChatDots />
