@@ -8,13 +8,13 @@ import '../../styles/SearchPage.css';
 const PopulateSearchResults = ({ queryResults, queryType }) => {
     // some management of how results will display here
 
+    console.log(queryResults);
     
-    const ShowResults = ({ data, type }) => {
 
         // if type "artist", return artist cards
-        if (type === "artist") {
+        if (queryType === "artists") {
             // CreateAtistSearchResults(queryResults)
-            return data.items.map(artist => (
+            return queryResults.items.map(artist => (
                 <Col lg="3" key={artist.id} className="albumCard">
                     <Link to={`/artist?q=${artist.id}`} className="text-decoration-none">
                         <Card className="mx-3 cardCarousel">
@@ -36,9 +36,10 @@ const PopulateSearchResults = ({ queryResults, queryType }) => {
                 </Col>
             ))
 
+            
         // if type "album", return album cards
-        } else if (type === "album") {
-            return queryResults.items.map(album => (
+        } else if (queryType === "albums") {
+            return queryResults.map(album => (
                 <Col lg="3" key={album.id} className="albumCard">
                     <Link to={`/album?q=${album.id}`} className="text-decoration-none">
                         <Card className="mx-3 cardCarousel">
@@ -66,14 +67,10 @@ const PopulateSearchResults = ({ queryResults, queryType }) => {
             )
         }
 
-    }
+    
 
     
-    return (
-        <Row className="justify-content-start">
-            <ShowResults data={queryResults} type={queryType} />
-        </Row>
-    )
+    
 }
 
 export default PopulateSearchResults;
