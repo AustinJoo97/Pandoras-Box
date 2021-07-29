@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { GiAbstract082 } from "react-icons/gi";
+import { GiAbstract082, GiAbstract020, GiAbstract041 } from "react-icons/gi";
 
 import {
     Card,
@@ -23,8 +23,10 @@ const UserSettings = ({ userDetails }) => {
       email: userParam,
       location: userParam,
       bio: userParam,
+      proPic: userParam,
      },
   });
+
 
   // redirect to personal profile page if username is yours
   const user = data?.me || data?.user || {};
@@ -32,12 +34,23 @@ const UserSettings = ({ userDetails }) => {
     return <Redirect to="/me" />;
   }
 
+  const ShowAvatar = ({}) => {
+    if (user.proPic === "GiAbtract82") {
+      return <GiAbstract082 className="avatar" size={120}/>
+    } else if (user.proPic === "GiAbtract20"){
+      return <GiAbstract020 className="avatar" size={120}/>
+    } else {
+      return <GiAbstract041 className="avatar" size={120}/>
+    } 
+  }
+
+
     return (
     <Col lg={8} className="">
       <Card className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
         <Card.Header className="text-center  settingsHeader">
           <div className="mb-3 mx-auto">
-            <GiAbstract082 className="rounded-circle" width="110"/>
+            <ShowAvatar />
           </div>
           <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
           <span className="d-block mb-2">{user.location}</span>

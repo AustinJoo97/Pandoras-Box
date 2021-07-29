@@ -142,6 +142,7 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
 
+            {/* Avatar */}
               <Col lg={6} className="form-group">
                 <Form.Group className="mb-2">
                   <Form.Label>Avatar</Form.Label>
@@ -149,7 +150,7 @@ const SettingsUpdate = () => {
                     id="feproPic"
                     placeholder="Avatar String"
                     name="proPic"
-                    value={formState.location}
+                    value={formState.proPic}
                     onChange={handleChange}
                   />
                 </Form.Group>
