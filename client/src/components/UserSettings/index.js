@@ -1,6 +1,8 @@
 import React from 'react';
+import { Redirect, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-import Auth from '../../utils/auth';
+import { GiAbstract082, GiAbstract020, GiAbstract041 } from "react-icons/gi";
 
 import {
     Card,
@@ -8,35 +10,62 @@ import {
     Col,
 } from "react-bootstrap";
 
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
+import Auth from '../../utils/auth';
 
 const UserSettings = ({ userDetails }) => {
+
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { 
+      username: userParam,
+      email: userParam,
+      location: userParam,
+      bio: userParam,
+      proPic: userParam,
+     },
+  });
+
+
+  // redirect to personal profile page if username is yours
+  const user = data?.me || data?.user || {};
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Redirect to="/me" />;
+  }
+
+  const ShowAvatar = ({}) => {
+    if (user.proPic === "GiAbtract82") {
+      return <GiAbstract082 className="avatar" size={120}/>
+    } else if (user.proPic === "GiAbtract20"){
+      return <GiAbstract020 className="avatar" size={120}/>
+    } else {
+      return <GiAbstract041 className="avatar" size={120}/>
+    } 
+  }
+
 
     return (
     <Col lg={8} className="">
       <Card className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
         <Card.Header className="text-center  settingsHeader">
           <div className="mb-3 mx-auto">
-            <img
-              className="rounded-circle"
-              src={userDetails.avatar}
-              alt={Auth.getProfile().data.username}
-              width="110"
-            />
+            <ShowAvatar />
           </div>
           <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
-          <span className="d-block mb-2">{userDetails.location}</span>
+          <span className="d-block mb-2">{user.location}</span>
         </Card.Header>
         <Card.Body className="settingsBody">
             <div className="progress-wrapper">
               <strong className="text-muted d-block mb-2 ">
                 <Col>
                 <h3>
-                  Name :  {userDetails.name}
+                  Name :  {user.name}
                 </h3>
                 </Col>
                 <Col>
                 <h3>
-                  Email :  {userDetails.email}
+                  Email :  {user.email}
                 </h3>
                 </Col>
               </strong>
@@ -44,7 +73,7 @@ const UserSettings = ({ userDetails }) => {
             <h3 className="text-muted d-block mb-2">
               {userDetails.metaTitle}
             </h3>
-            <h3>{userDetails.metaValue}</h3>
+            <h3>{user.bio}</h3>
         </Card.Body >
       </Card>
     </Col>
