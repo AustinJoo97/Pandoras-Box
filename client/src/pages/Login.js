@@ -12,7 +12,8 @@ import {
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
+  let userData;
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -34,6 +35,8 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
+
+      userData = data;
     } catch (e) {
       console.error(e);
     }
@@ -43,11 +46,12 @@ const Login = (props) => {
       email: '',
       password: '',
     });
+    return;
   };
 
   return (
           <div className="mt-5">
-            {data ? (
+            {userData ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>

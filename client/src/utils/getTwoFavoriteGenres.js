@@ -16,28 +16,30 @@ export default getTwoFavoriteGenres = (userObj) => {
         }
     })
 
-    for(let i = 0; i < allGenres.length; i++){
+    const talliedGenres = Object.keys(favoritesObj);
+
+    for(let i = 0; i < talliedGenres.length; i++){
         if(!topGenre && !secondGenre){
             topGenre = {
-                genre: allGenres[i],
-                count: favoritesObj[allGenres[i]]
+                genre: talliedGenres[i],
+                count: favoritesObj[talliedGenres[i]]
             };
             secondGenre = {
-                genre: allGenres[i],
-                count: favoritesObj[allGenres[i]]
+                genre: talliedGenres[i],
+                count: favoritesObj[talliedGenres[i]]
             };
         }
 
-        if(favoritesObj[allGenres[i]] >= topGenre.count){
+        if(favoritesObj[talliedGenres[i]] >= topGenre.count){
             secondGenre = topGenre;
             topGenre = {
-                genre: allGenres[i],
-                count: favoritesObj[allGenres[i]]
+                genre: talliedGenres[i],
+                count: favoritesObj[talliedGenres[i]]
             };
-        } else if(favoritesObj[allGenres[i]] < topGenre.count && favoritesObj[allGenres[i]] > secondGenre.count){
+        } else if(favoritesObj[talliedGenres[i]] < topGenre.count && favoritesObj[talliedGenres[i]] > secondGenre.count){
             secondGenre = {
-                genre: allGenres[i],
-                count: favoritesObj[allGenres[i]]
+                genre: talliedGenres[i],
+                count: favoritesObj[talliedGenres[i]]
             };
         }
     }

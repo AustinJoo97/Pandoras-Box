@@ -34,9 +34,9 @@ const Profile = ({ userDetails }) => {
 
   const { loadingFavoriteAlbums, favoriteAlbumsData } = useQuery(QUERY_FAVORITE_ALBUMS);
 
-  const [ updateUser, { error }] = useMutation(UPDATE_USER);
+  const [ updateUser, { updadteUserError }] = useMutation(UPDATE_USER);
 
-  const [ deleteFavorite, { error } ] = useMutation(DELETE_FAVORITE);
+  const [ deleteFavorite, { deleteFavoritesError } ] = useMutation(DELETE_FAVORITE);
 
   // redirect to personal profile page if username is yours
   const user = data?.me || data?.user || {};
