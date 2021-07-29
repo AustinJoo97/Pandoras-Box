@@ -51,7 +51,7 @@ const Profile = ({ userDetails }) => {
   return (
     <Container>
       
-      <Card className="mb-4 bg-lightblue-dull">
+      <Card className="mb-4 bg-grey">
         <Card.Header className="border-bottom">
           <h6 className="m-0">{user.username}'s Profile</h6>
         </Card.Header>
@@ -73,9 +73,8 @@ const Profile = ({ userDetails }) => {
                       <span className="d-block mb-2">{userDetails.location}</span>
                     </Card.Header>
                     <Card.Body className="settingsBody">
-                      <ListGroupItem className="px-4 ">
                         <div className="progress-wrapper">
-                          <strong className="text-muted d-block mb-2">
+                          <strong className="text-muted d-block mb-2 ">
                             <Col>
                             <h3>
                               Name :  {userDetails.name}
@@ -88,18 +87,15 @@ const Profile = ({ userDetails }) => {
                             </Col>
                           </strong>
                         </div>
-                      </ListGroupItem>
-                      <ListGroupItem className="p-4">
                         <h3 className="text-muted d-block mb-2">
                           {userDetails.metaTitle}
                         </h3>
                         <h3>{userDetails.metaValue}</h3>
-                      </ListGroupItem>
                     </Card.Body >
                   </Card>
               </Col>
               <Col xs={2} md={4} lg={6}>
-              <PopulateCarousel queryResults={response} queryType="min" queryTitle="Your Favorite Al"/>
+              <PopulateCarousel queryResults={response} queryType="min" queryTitle="Your Favorite Albums"/>
               </Col>
               <YourRecentComments />
             </Row>

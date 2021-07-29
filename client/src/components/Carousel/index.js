@@ -52,7 +52,7 @@ const PopulateCarousel = ({ queryResults, queryType , queryTitle }) => {
                           <Col lg="3" key={album.id}  className="albumCard">
                               <Link to={`/album?q=${album.id}`} className="text-decoration-none">
                                   <Card className="mx-3 cardCarousel ">
-                                      <Card.Body className="p-0 albumBody">
+                                      <Card.Body className="p-0 albumBody text-center">
                                           <div className="embed-responsive">
                                           <Card.Img
                                             className="card-img-top embed-responsive-item"
@@ -61,9 +61,9 @@ const PopulateCarousel = ({ queryResults, queryType , queryTitle }) => {
                                             src={album.images[0].url}
                                           />
                                           </div>
-                                          <p>
+                                          <h4>
                                           {album.name}
-                                          </p>
+                                          </h4>
                                           <p>Year released: {album.release_date}</p>
                                           <p>Total tracks: {album.total_tracks}</p>
                                       </Card.Body>
@@ -89,7 +89,7 @@ const PopulateCarousel = ({ queryResults, queryType , queryTitle }) => {
                           <Col lg="3" key={album.id}  className="albumCard">
                               <Link to={`/album?q=${album.id}`} className="text-decoration-none">
                                   <Card className="mx-3 cardCarousel ">
-                                      <Card.Body className="p-0 albumBody">
+                                      <Card.Body className="p-0 albumBody text-center">
                                           <div className="embed-responsive">
                                           <Card.Img
                                             className="card-img-top embed-responsive-item"
@@ -98,9 +98,9 @@ const PopulateCarousel = ({ queryResults, queryType , queryTitle }) => {
                                             src={album.images[0].url}
                                           />
                                           </div>
-                                          <p>
+                                          <h5>
                                           {album.name}
-                                          </p>
+                                          </h5>
                                           <p>Year released: {album.release_date}</p>
                                           <p>Total tracks: {album.total_tracks}</p>
                                       </Card.Body>
