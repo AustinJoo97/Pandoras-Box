@@ -4,12 +4,11 @@
 }
 
 
-/* import font from oft file */
-@font-face { font-family: Bender; src: url('bender.otf'); } 
 
-html, body {
-    font-family: bender
-}
+
+/* html, body {
+    font-family: d
+} */
 
 .Site {
     display: flex;

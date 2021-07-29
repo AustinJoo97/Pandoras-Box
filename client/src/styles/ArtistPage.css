@@ -60,6 +60,12 @@
     text-shadow: 2px 1px 10px rgba(17, 17, 17, 0.603);
 }
 
+.albumBody h5 {
+    color: rgb(251, 255, 0);
+    font-weight: 600;
+    text-shadow: 2px 1px 10px rgba(17, 17, 17, 0.603);
+}
+
 .albumBody span {
     color: rgb(31, 31, 31);
     text-shadow: 2px 1px 10px rgba(17, 17, 17, 0.603);

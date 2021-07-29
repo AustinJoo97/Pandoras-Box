@@ -32,13 +32,25 @@ html, body {
 }
 
 .settingsCard {
-    background-color: rgb(168, 168, 168); 
+    background-color: rgb(132, 185, 255); 
 }
 
 .settingsBody h3 {
     color: black;
 }
 
+.settingsBody {
+    background-color: rgb(132, 185, 255);
+}
+
 .bg-lightblue-dull {
     background-color: rgba(184, 215, 255, 0.877);
+}
+
+.bg-lightblue-dull-dull {
+    background-color: rgba(16, 116, 255, 0.705);
+}
+
+.bg-grey {
+    background-color:rgb(92, 92, 92)
 }

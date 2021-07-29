@@ -1,4 +1,5 @@
 // Hooks
+import React from 'react';
 import {
   ApolloClient,
   InMemoryCache,

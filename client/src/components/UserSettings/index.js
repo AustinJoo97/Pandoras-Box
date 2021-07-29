@@ -13,45 +13,40 @@ const UserSettings = ({ userDetails }) => {
 
     return (
     <Col lg={8} className="">
-        <Card className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
-          <Card.Header className="text-center  settingsHeader">
-            <div className="mb-3 mx-auto">
-              <img
-                className="rounded-circle"
-                src={userDetails.avatar}
-                alt={Auth.getProfile().data.username}
-                width="110"
-              />
+      <Card className="ml-5 mr-5 mt-5 mb-4 pt-3 settingsCard">
+        <Card.Header className="text-center  settingsHeader">
+          <div className="mb-3 mx-auto">
+            <img
+              className="rounded-circle"
+              src={userDetails.avatar}
+              alt={Auth.getProfile().data.username}
+              width="110"
+            />
+          </div>
+          <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
+          <span className="d-block mb-2">{userDetails.location}</span>
+        </Card.Header>
+        <Card.Body className="settingsBody">
+            <div className="progress-wrapper">
+              <strong className="text-muted d-block mb-2 ">
+                <Col>
+                <h3>
+                  Name :  {userDetails.name}
+                </h3>
+                </Col>
+                <Col>
+                <h3>
+                  Email :  {userDetails.email}
+                </h3>
+                </Col>
+              </strong>
             </div>
-            <h4 className="mb-0">{Auth.getProfile().data.username}</h4>
-            <span className="d-block mb-2">{userDetails.location}</span>
-          </Card.Header>
-          <Card.Body className="settingsBody">
-            <ListGroupItem className="px-4 ">
-              <div className="progress-wrapper">
-                <strong className="text-muted d-block mb-2">
-                  <Col>
-                  <h3>
-                    Name :  {userDetails.name}
-                  </h3>
-                  </Col>
-                  <Col>
-                  <h3>
-                    Email :  {userDetails.email}
-                  </h3>
-                  
-                  </Col>
-                </strong>
-              </div>
-            </ListGroupItem>
-            <ListGroupItem className="p-4">
-              <h3 className="text-muted d-block mb-2">
-                {userDetails.metaTitle}
-              </h3>
-              <h3>{userDetails.metaValue}</h3>
-            </ListGroupItem>
-          </Card.Body >
-        </Card>
+            <h3 className="text-muted d-block mb-2">
+              {userDetails.metaTitle}
+            </h3>
+            <h3>{userDetails.metaValue}</h3>
+        </Card.Body >
+      </Card>
     </Col>
     );
   };
