@@ -6,7 +6,7 @@ import PopulateSearchResults from '../components/SearchResultsDetails';
 import { getTokenThenArtists } from '../utils/API';
 
 // spotify query based on search type
-const queryArtists = async (setSeachResults) => {
+const queryArtists = async (setSeachResults, setLoading) => {
   // get our data values
   const params = new URLSearchParams(window.location.search);
   const searchQuery = params.get('q')
@@ -15,9 +15,10 @@ const queryArtists = async (setSeachResults) => {
 
   if (searchType === 'artist') {
     const response = await getTokenThenArtists(searchQuery)
-    setSeachResults(response)
+    await setSeachResults(response)
+    setLoading(false);
     
-  } else if (searchType === 'genre') {
+  } else if (searchType === 'album') {
     // get genre search
   }
 }
@@ -26,9 +27,10 @@ const queryArtists = async (setSeachResults) => {
 const ShowSearchScreen = (props) => {
   // create state to hold that data from the query
   const [searchResults, setSeachResults] = useState([])
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    queryArtists(setSeachResults)
+    queryArtists(setSeachResults, setLoading)
   }, [setSeachResults])
 
   const params = new URLSearchParams(window.location.search);
@@ -36,6 +38,12 @@ const ShowSearchScreen = (props) => {
   const searchType = params.get('type');
 
   // console.log(searchResults)
+
+  if (isLoading) {
+    return (
+      <h5>Loading...</h5>
+    )
+  }
 
   return (
     <Container>
