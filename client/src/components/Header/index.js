@@ -5,10 +5,6 @@ import { GiBoxTrap } from "react-icons/gi"
 import Dropdown from 'react-bootstrap/Dropdown'
 
 
-// pages
-import ShowSearchScreen from '../../pages/Search'
-
-
 // utils
 import Auth from '../../utils/auth';
 import '../../styles/Header.css';
@@ -50,12 +46,16 @@ const Header = () => {
 
                 {/* will ideally be populated via api call and map */}
                 <Dropdown.Menu>
-                  <Dropdown.Item href={`/search?q=rap&type=genre`}>Rap</Dropdown.Item>
-                  <Dropdown.Item href={`/search?q=country&type=genre`}>Country</Dropdown.Item>
-                  <Dropdown.Item href={`/search?q=hip-hop&type=genre`}>Hip-Hop</Dropdown.Item>
-                  <Dropdown.Item href={`/search?q=folk&type=genre`}>Folk</Dropdown.Item>
-                  <Dropdown.Item href={`/search?q=randb&type=genre`}>R&B</Dropdown.Item>
-                  <Dropdown.Item href={`/search?q=techno&type=genre`}>Techno</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=techno&type=albums`}>Techno</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=country&type=albums`}>Country</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=hip-hop&type=albums`}>Hip-Hop</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=rap&type=albums`}>Rap</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=folk&type=albums`}>Folk</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=classical&type=albums`}>Classical</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=world&type=albums`}>World</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=metal&type=albums`}>Metal</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=new-wave&type=albums`}>New wave</Dropdown.Item>
+                  <Dropdown.Item href={`/search?q=dubstep&type=albums`}>Dubstep</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
 
@@ -72,7 +72,7 @@ const Header = () => {
               {/* search button, takes state and constructs our params */}
                 <Link
                   className="col-1"
-                  to={`/search?q=${searchVal}&type=artist`}>
+                  to={`/search?q=${searchVal}&type=artists`}>
                   <HiSearch />
                 </Link>
             </div>

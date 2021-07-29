@@ -60,7 +60,7 @@ const ViewAlbum = ({ album }) => {
     };
 
     if (!album.artists) return null;
-
+    console.log(album);
     return (
         <Container id="album">
             <Row className="d-flex">
@@ -102,7 +102,7 @@ const ViewAlbum = ({ album }) => {
 
                         <div>
                             <span>Artist:</span>
-                            <Link className="artist-link" to="./artist">
+                            <Link className="artist-link" to={`/artist?q=${album.artists[0].id}`}>
                                 <p>{album.artists[0].name}</p>
                             </Link>
                         </div>
