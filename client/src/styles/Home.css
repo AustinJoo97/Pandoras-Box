@@ -32,7 +32,7 @@ html, body {
 }
 
 .settingsCard {
-    background-color: rgb(132, 185, 255); 
+    background-color: rgb(202, 225, 255); 
 }
 
 .settingsBody h3 {
@@ -40,7 +40,7 @@ html, body {
 }
 
 .settingsBody {
-    background-color: rgb(132, 185, 255);
+    background-color: rgb(202, 225, 255);
 }
 
 .bg-lightblue-dull {

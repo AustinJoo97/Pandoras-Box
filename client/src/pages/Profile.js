@@ -79,7 +79,7 @@ const Profile = ({ userDetails }) => {
       
       <Card className="mb-4 bg-grey">
         <Card.Header className="border-bottom">
-          <h6 className="m-0">{user.username}'s Profile</h6>
+          <h6 className="m-0 profileName text-center">{user.username}'s Profile</h6>
         </Card.Header>
         <Card.Body>
           <ListGroup >

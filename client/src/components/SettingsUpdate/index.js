@@ -64,7 +64,7 @@ const SettingsUpdate = () => {
         </p>
       ) : (
         <Card>
-        <Card.Body>
+        <Card.Body className="settingsBody">
         <Form onSubmit={handleFormSubmit} >
             <Row >
               {/* Name */}
@@ -73,7 +73,7 @@ const SettingsUpdate = () => {
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     id="feName"
-                    placeholder="Name"
+                    placeholder={Auth.getProfile().data.username}
                     name="name"
                     type="text"
                     value={formState.name}

@@ -13,7 +13,7 @@ import {
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
-const UserSettings = ({ userDetails }) => {
+  const UserSettings = ({ userDetails }) => {
 
   const { username: userParam } = useParams();
 
