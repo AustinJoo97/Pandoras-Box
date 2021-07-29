@@ -33,7 +33,8 @@ const grabData = async (setAllAlbums, setLoading) => {
         artistName: album.artists[0].name,
         albumImg: album.images[0].url,
         albumId: album.id,
-        artistId: album.artists[0].id
+        artistId: album.artists[0].id,
+        totalTracks: album.total_tracks
       })
       )
     })

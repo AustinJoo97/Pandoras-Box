@@ -162,9 +162,9 @@ const PopulateCarousel = ({ queryResults, queryTitle }) => {
                         queryResults.map((album) => (
                             // <h1 key={album.albumId}>{album.albumName}</h1>
                             <Col lg="3" key={album.albumId} className="albumCard">
-                                <Link to={`/album?q=${album.albumId}`} className="text-decoration-none">
-                                    <Card className="mx-3 cardCarousel ">
-                                        <Card.Body className="p-0 albumBody text-center">
+                                <Card className="mx-3 cardCarousel ">
+                                    <Card.Body className="p-0 albumBody text-center">
+                                        <Link to={`/album?q=${album.albumId}`} className="text-decoration-none">
                                             <div className="embed-responsive">
                                                 <Card.Img
                                                     className="card-img-top embed-responsive-item"
@@ -173,14 +173,14 @@ const PopulateCarousel = ({ queryResults, queryTitle }) => {
                                                     src={album.albumImg}
                                                 />
                                             </div>
-                                            <h5>
-                                                {album.albumName}
-                                            </h5>
+                                            <h5>{album.albumName}</h5>
+                                        </Link>
+                                        <Link to={`/artist?q=${album.artistId}`} className="">
                                             <p>by {album.artistName}</p>
-                                            {/* <p>{album.total_tracks}</p> */}
-                                        </Card.Body>
-                                    </Card>
-                                </Link>
+                                        </Link>
+                                        <p>{album.totalTracks} tracks</p>
+                                    </Card.Body>
+                                </Card>
                             </Col>
                         ))}
                 </Slider>
