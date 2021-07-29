@@ -74,6 +74,41 @@ const getTokenThenArtists = async (artistName) => {
   return getArtists(res.data.access_token, artistName);
 };
 
+// Get token from spotify then call `getArtists` to return artists based on query string.
+const getTokenThenArtistsDetails = async (artistID) => {
+    const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials");
+  
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
+      },
+    };
+  
+    const res = await axios.post(
+      "https://accounts.spotify.com/api/token",
+      params,
+      config
+    );
+  
+    // Token and artistName passed in as parameters. API call is made to return 30 artist based on user search.
+    const getArtistsDetails = async (token, artistID) => {
+      const { data } = await axios.get(
+        `https://api.spotify.com/v1/artists/${artistID}`,
+        {
+          method: "GET",
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+  
+        // console.log(data)
+      return data;
+    };
+  
+    return getArtistsDetails(res.data.access_token, artistID);
+};
+
 // Get token from spotify then call `getArtistAlbums` to return albums based on artistID.
 const getTokenThenArtistAlbums = async (artistID) => {
   const params = new URLSearchParams();
@@ -146,5 +181,6 @@ const getTokenThenSingleAlbumDetails = async (albumID) => {
 // ---- CALLS USED FOR TESTING FUNCTIONS!! ----
 // getTokenThenAlbumGenres('hiphop')
 // getTokenThenArtists('Drake')
+// getTokenThenArtistsDetails('0TnOYISbd1XYRBk9myaseg')
 // getTokenThenArtistAlbums('0TnOYISbd1XYRBk9myaseg')
 // getTokenThenSingleAlbumDetails('4aawyAB9vmqN3uQ7FjRGTy')
