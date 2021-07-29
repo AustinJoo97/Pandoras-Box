@@ -16,13 +16,14 @@ const ViewArtist = ({ artist, albums }) => {
                         <Card className="mx-3 cardCarousel">
                             <Card.Body className="albumBody">
                                 <div className="embed-responsive">
+                                    <span>{album.type}</span>
                                     <Card.Img
                                         className="card-img-top embed-responsive-item"
                                         src={album.images[0].url}
                                         alt={album.name}
                                     />
                                 </div>
-                                <h4 className="">{album.type}</h4>
+                                <h4 className="">{album.name}</h4>
                                 <span> - {album.release_date}</span>
                                 <p>Album popularity: {album.total_tracks}</p>
                             </Card.Body>
@@ -34,7 +35,7 @@ const ViewArtist = ({ artist, albums }) => {
 
         return <p>nothing found here</p>;
     }
-    // console.log(albums)
+    console.log(albums)
     
     return(
         <Container id="artist">

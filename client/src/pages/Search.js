@@ -17,7 +17,7 @@ const queryArtists = async (setSeachResults, setLoading) => {
     const response = await getTokenThenArtists(searchQuery)
     await setSeachResults(response)
     setLoading(false);
-    
+
   } else if (searchType === 'album') {
     // get genre search
   }
@@ -31,7 +31,7 @@ const ShowSearchScreen = (props) => {
 
   useEffect(() => {
     queryArtists(setSeachResults, setLoading)
-  }, [setSeachResults])
+  }, [searchResults])
 
   const params = new URLSearchParams(window.location.search);
   const searchQuery = params.get('q')
