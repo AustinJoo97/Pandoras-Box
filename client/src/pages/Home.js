@@ -3,13 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/Home.css";
 import { useState, useEffect } from 'react'
 
-import RecentComments from '../components/RecentCommentSection';
+// import RecentComments from '../components/RecentCommentSection';
 import PopulateCarousel from '../components/Carousel';
 import { getTokenThenAlbumGenres } from '../utils/API'
 
 
 // query 3 calls to spotify api to get three different sets of data for the carousel
-const grabData = async (setAllAlbums) => {
+const grabData = async (setAllAlbums, setLoading) => {
 
   // create empty object to await a specific queries response,
   // then assign that data(val) to it's name(key) in that object
@@ -39,8 +39,9 @@ const grabData = async (setAllAlbums) => {
     })
     // console.log(filteredResults)
 
-    // Set our state as this object of filtered results
-    setAllAlbums(filteredResults)
+    // Set our state as this object of filtered results, turn off loading
+    await setAllAlbums(filteredResults)
+    setLoading(false);
 
   } catch (err) {
     console.error(err);
@@ -52,15 +53,23 @@ const grabData = async (setAllAlbums) => {
 const Home = () => {
   // create state that holds all albums/entries data
   const [allAlbums, setAllAlbums] = useState([])
+  const [isLoading, setLoading] = useState(true);
 
 
   // run function that will start the queries to spotify API
   // what specifically is getting searched is handled in there
   // pass in our stateChange function to hold our data after all all data was fetched
   useEffect(() => {
-    grabData(setAllAlbums);
+    grabData(setAllAlbums, setLoading);
   }, [setAllAlbums])
 
+  // console.log(allAlbums.rap)
+
+  if (isLoading) {
+    return (
+      <h5>loading...</h5>
+    )
+  }
 
   return (
     <main>
@@ -68,7 +77,7 @@ const Home = () => {
         <PopulateCarousel queryResults={allAlbums.rap} queryTitle="Rap Albums" />
         <PopulateCarousel queryResults={allAlbums.jazz} queryTitle="Jazz Albums" />
         <PopulateCarousel queryResults={allAlbums.rock} queryTitle="Rock Albums" />
-        <RecentComments />
+        {/* <RecentComments /> */}
       </div>
     </main>
   );
