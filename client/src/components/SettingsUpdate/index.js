@@ -70,32 +70,6 @@ const SettingsUpdate = () => {
               {/* Name */}
               <Col lg={6} className="form-group">
                 <Form.Group className="mb-2">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control
-                    id="feFirstName"
-                    placeholder="First Name"
-                    name="firstName"
-                    type="text"
-                    value={formState.firstName}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-              </Col>
-              <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    id="feLastName"
-                    placeholder="Name"
-                    name="lastName"
-                    type="text"
-                    value={formState.lastName}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-              </Col>
-              {/* <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     id="feName"
@@ -106,10 +80,10 @@ const SettingsUpdate = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col> */}
+              </Col>
               {/* Username */}
-              <Col lg={12} className="form-group">
-                <Form.Group controlId="formFile" className="mb-2">
+              <Col lg={6} className="form-group">
+                <Form.Group className="mb-2">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
                     id="feUsername"
@@ -124,7 +98,7 @@ const SettingsUpdate = () => {
             <Row form>
               {/* Email */}
               <Col lg={12} className="form-group">
-                <Form.Group controlId="formFile" className="mb-2">
+                <Form.Group className="mb-2">
                   <Form.Label>Email Address</Form.Label>
                   <Form.Control
                     type="email"
@@ -139,7 +113,7 @@ const SettingsUpdate = () => {
               </Col>
               {/* Password */}
               <Col lg={12} className="form-group">
-                <Form.Group controlId="formFile" className="mb-2">
+                <Form.Group className="mb-2">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
@@ -156,7 +130,7 @@ const SettingsUpdate = () => {
             <Row form>
               {/* Location */}
               <Col lg={6} className="form-group">
-                <Form.Group controlId="formFile" className="mb-2">
+                <Form.Group className="mb-2">
                   <Form.Label>General Location</Form.Label>
                   <Form.Control
                     id="feLocation"
@@ -167,23 +141,28 @@ const SettingsUpdate = () => {
                   />
                 </Form.Group>
               </Col>
+
               <Col lg={6} className="form-group">
-                <Form.Group controlId="formFile" className="mb-2">
-                  <Form.Label>Profile Picture</Form.Label>
-                  <Form.Control 
-                    type="file"
+                <Form.Group className="mb-2">
+                  <Form.Label>Avatar</Form.Label>
+                  <Form.Control
+                    id="feproPic"
+                    placeholder="Avatar String"
+                    name="proPic"
+                    value={formState.location}
                     onChange={handleChange}
                   />
                 </Form.Group>
               </Col>
             </Row>
-
             <Row form>
               {/* Description */}
               <Col md="12" className="form-group">
-                <Form.Group controlId="formFile" className="mb-2">
+                <Form.Group className="mb-2">
                   <Form.Label>Profile Description</Form.Label>
                     <Form.Control
+                      id="feBio"
+                      name="bio"
                       as="textarea"
                       placeholder="Leave a comment here"
                       style={{ height: '100px' }}
@@ -192,6 +171,7 @@ const SettingsUpdate = () => {
                   </Form.Group>
               </Col>
             </Row>
+
             <Button
               className="btn btn-primary w-100 btn-block mt-4"
               style={{ cursor: 'pointer' }}
