@@ -74,24 +74,9 @@ const getAlbums = async (token, genreID) => {
         images: album.images[0].url
       });
   })
-
+  console.log('all done!');
+  process.exit(0);
   // return;
 };
 
-// getToken();
-
-db.once('open', async () => {
-  await Album.deleteMany({}); 
-
-  // const token = await getToken();
-  // const genres = await getGenres(token);
-  // genres.map( async (genre) => {
-  //   // console.log(genre);
-  //   await getAlbums(token, genre)
-  // })
-
-  await getToken();
-  
-  console.log('all done!');
-  process.exit(0);
-});
+getToken();
