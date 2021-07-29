@@ -20,7 +20,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    getComments: async(parent, { apiAlbumID }) => {
+    getComments: async() => {
       return Comment.find().populate('postedBy', 'albumCommented');
     },
 
@@ -66,21 +66,26 @@ const resolvers = {
       return { token, user };
     },
 
-    updateUser: async (parent, { name, username, email, password, location, bio, proPic }) => {
-      const user = await User.findByIdAndUpdate(
-        { username: username},
-        { $set : {
-          name,
-          username,
-          email,
-          password,
-          location,
-          bio,
-          proPic
-        }},
-        {new: true}
-      )
-      return user;
+    updateUser: async (parent, { name, username, email, password, location, bio, proPic }, context) => {
+      if(context.user){
+        const user = await User.findByIdAndUpdate(
+          { _id: context.user._id},
+          { $set : {
+            name,
+            username,
+            email,
+            password,
+            location,
+            bio,
+            proPic
+          }},
+          {new: true}
+        )
+  
+        const token = signToken(user);
+        return { token, user }
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     login: async (parent, { email, password }) => {

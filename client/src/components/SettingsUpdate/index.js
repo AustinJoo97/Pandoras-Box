@@ -23,8 +23,9 @@ const SettingsUpdate = () => {
     bio: '',
     proPic: '',
   });
+  let userData;
 
-  const [updateUser, { error, data }] = useMutation(UPDATE_USER);
+  const [updateUser, { error }] = useMutation(UPDATE_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,25 +47,54 @@ const SettingsUpdate = () => {
 
       Auth.login(data.updateUser.token);
 
+      userData = data;
+      return userData;
     } catch (e) {
       console.error(e);
     }
+    return;
   };
 
     return (
       
       <Col lg={4} className="ml-5 mr-1 mb-5 mt-5">
-      {data ? (
+      {userData ? (
         <p>
           Success! You may now head
         </p>
       ) : (
-        <Card className="settingsCard">
-        <Card.Body className="">
+        <Card>
+        <Card.Body>
         <Form onSubmit={handleFormSubmit} >
             <Row >
               {/* Name */}
               <Col lg={6} className="form-group">
+                <Form.Group className="mb-2">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
+                    id="feFirstName"
+                    placeholder="First Name"
+                    name="firstName"
+                    type="text"
+                    value={formState.firstName}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col lg={6} className="form-group">
+                <Form.Group className="mb-2">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    id="feLastName"
+                    placeholder="Name"
+                    name="lastName"
+                    type="text"
+                    value={formState.lastName}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              {/* <Col lg={6} className="form-group">
                 <Form.Group className="mb-2">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
@@ -76,10 +106,10 @@ const SettingsUpdate = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col>
+              </Col> */}
               {/* Username */}
-              <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
+              <Col lg={12} className="form-group">
+                <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
                     id="feUsername"
@@ -91,10 +121,10 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
+            <Row form>
               {/* Email */}
               <Col lg={12} className="form-group">
-                <Form.Group className="mb-2">
+                <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Email Address</Form.Label>
                   <Form.Control
                     type="email"
@@ -109,7 +139,7 @@ const SettingsUpdate = () => {
               </Col>
               {/* Password */}
               <Col lg={12} className="form-group">
-                <Form.Group className="mb-2">
+                <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
@@ -123,10 +153,10 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
+            <Row form>
               {/* Location */}
               <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
+                <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>General Location</Form.Label>
                   <Form.Control
                     id="feLocation"
@@ -138,7 +168,7 @@ const SettingsUpdate = () => {
                 </Form.Group>
               </Col>
               <Col lg={6} className="form-group">
-                <Form.Group className="mb-2">
+                <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Profile Picture</Form.Label>
                   <Form.Control 
                     type="file"
@@ -148,21 +178,18 @@ const SettingsUpdate = () => {
               </Col>
             </Row>
 
-            <Row>
+            <Row form>
               {/* Description */}
               <Col md="12" className="form-group">
-                <Form.Group className="mb-2">
+                <Form.Group controlId="formFile" className="mb-2">
                   <Form.Label>Profile Description</Form.Label>
-                  <Form.Control
-                    id="feDescription"
-                    as="textarea"
-                    name="bio"
-                    placeholder="Leave a description here"
-                    value={formState.bio}
-                    style={{ height: '100px' }}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
+                    <Form.Control
+                      as="textarea"
+                      placeholder="Leave a comment here"
+                      style={{ height: '100px' }}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
               </Col>
             </Row>
             <Button

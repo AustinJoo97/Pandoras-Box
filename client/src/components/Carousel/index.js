@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Container, Col, Card} from "react-bootstrap";
+import { Container, Col, Card } from "react-bootstrap";
 import Slider from "react-slick";
 
 // Import css files
@@ -10,7 +10,31 @@ import "slick-carousel/slick/slick-theme.css";
 import '../../styles/Carousel.css';
 import '../../styles/SearchPage.css';
 
-const PopulateCarousel = ({ queryResults, queryType , queryTitle }) => {
+const settingsMin = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+};
+
+const settingsGen = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1
+};
+
+const settingsComments = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1
+};
+
+const PopulateCarousel = ({ queryResults, queryTitle }) => {
     // some management of how results will display here
 
     const ShowResults = ({ type }) => {
@@ -158,9 +182,8 @@ const PopulateCarousel = ({ queryResults, queryType , queryTitle }) => {
 
     }
 
-    return (
-        <ShowResults type={queryType} />
-    )
 }
 
 export default PopulateCarousel;
+
+
