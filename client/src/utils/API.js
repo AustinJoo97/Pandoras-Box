@@ -7,7 +7,7 @@ const clientSecret = "aeec5e00e5e44eb99fc43891e89e2c5a";
 
 // Get token from spotify then call `getAlbumGenres` to return albums by genre.
 
-const getTokenThenAlbumGenres = async (genreID) => {
+export const getTokenThenAlbumGenres = async (genreID) => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
 
@@ -43,7 +43,7 @@ const getTokenThenAlbumGenres = async (genreID) => {
 
 
 // Get token from spotify then call `getArtists` to return artists based on query string.
-const getTokenThenArtists = async (artistName) => {
+export const getTokenThenArtists = async (artistName) => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
 
@@ -78,7 +78,7 @@ const getTokenThenArtists = async (artistName) => {
 };
 
 // Get token from spotify then call `getArtists` to return artists based on query string.
-const getTokenThenArtistsDetails = async (artistID) => {
+export const getTokenThenArtistsDetails = async (artistID) => {
     const params = new URLSearchParams();
     params.append("grant_type", "client_credentials");
   
@@ -113,7 +113,7 @@ const getTokenThenArtistsDetails = async (artistID) => {
 };
 
 // Get token from spotify then call `getArtistAlbums` to return albums based on artistID.
-const getTokenThenArtistAlbums = async (artistID) => {
+export const getTokenThenArtistAlbums = async (artistID) => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
 
@@ -148,7 +148,7 @@ const getTokenThenArtistAlbums = async (artistID) => {
 };
 
 // Get token from spotify then call `getSingleAlbumDetails` to return the album details of a single ablum (requires album ID).
-const getTokenThenSingleAlbumDetails = async (albumID) => {
+export const getTokenThenSingleAlbumDetails = async (albumID) => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
 
@@ -183,6 +183,7 @@ const getTokenThenSingleAlbumDetails = async (albumID) => {
 
   return getSingleAlbumDetails(res.data.access_token, albumID);
 };
+
 
 // ---- CALLS USED FOR TESTING FUNCTIONS!! ----
 // getTokenThenAlbumGenres('hiphop')
