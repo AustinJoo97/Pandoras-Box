@@ -5,12 +5,12 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     getUsers: async () => {
-      return User.find().populate('favorites', 'comments');
+      return User.find().populate('comments');
       // return User.find().populate('favorites').populate('comments');
     },
 
     getSingleUser: async (parent, { username }) => {
-      return User.findOne({ username }).populate('favorites', 'comments');
+      return User.findOne({ username }).populate('comments');
     },
 
     me: async (parent, args, context) => {
@@ -106,16 +106,37 @@ const resolvers = {
       return { token, user };
     },
 
-    addNewFavorite: async (parent, { albumID }) => {
-      const newFavorite = await Album.findOne({_id: albumID})
+    addNewFavorite: async (parent, { albumID, name, artist, image, genre }, context) => {
+      if(context.user){
+        const newFavorite = await Album.findOne({_id: albumID})
+  
+        if(newFavorite === null || newFavorite.name !== name){
+          const addedFavorite = await Album.create({
+            _id: albumID, name, artist, image, genre
+          })
+  
+          const updatedUser =  await User.findOneAndUpdate(
+            { _id: context.user._id },
+            {
+              $addToSet: {favorites: addedFavorite}
+            },
+            { new: true }
+          );
 
-      return User.findOneAndUpdate(
-        { _id: context.user._id },
-        {
-          $addToSet: {favorites: newFavorite}
-        },
-        { new: true }
-      );
+          return updatedUser;
+        }
+  
+        const updatedUser =  await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $addToSet: {favorites: newFavorite._id}
+          },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     deleteFavorite: async (parent, { albumID }, context) => {
@@ -134,6 +155,7 @@ const resolvers = {
           }
         })
       }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     addComment: async (parent, { commentText, albumCommented}, context) => {

@@ -41,8 +41,8 @@ export const LOGIN_USER = gql`
 
 
 export const ADD_NEW_FAVORITE = gql`
-  mutation addFavorite($albumID: String!){
-    addNewFavorite(albumID: $albumID){
+  mutation addFavorite($albumID: String!, $name: String!, $artist: String, $image: String, $genre: String){
+    addNewFavorite(albumID: $albumID, name: $name, artist: $artist, image: $image, genre: $genre){
       _id
       username
       favorites {

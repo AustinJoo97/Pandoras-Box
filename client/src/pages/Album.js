@@ -23,8 +23,6 @@ const AlbumPage = () => {
     }, [setAlbum])
 
 
-    console.log(albumData)
-
     return (
         <div>
             <ViewAlbum
