@@ -20,10 +20,8 @@ import { QUERY_USER, QUERY_ME, QUERY_USER_COMMENTS, QUERY_FAVORITE_ALBUMS } from
 import { UPDATE_USER, DELETE_FAVORITE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const albumsQuery = artistAlbumsSampleData;
 
 const Profile = ({ userDetails }) => {
-  const response = albumsQuery;
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -111,7 +109,7 @@ const Profile = ({ userDetails }) => {
                   </Card>
               </Col>
               <Col xs={2} md={4} lg={6}>
-              <PopulateCarousel queryResults={response} queryType="min" queryTitle="Your Favorite Albums"/>
+              <PopulateCarousel queryResults={favoriteAlbums} queryType="min" queryTitle="Your Favorite Albums"/>
               </Col>
               <YourRecentComments />
             </Row>
