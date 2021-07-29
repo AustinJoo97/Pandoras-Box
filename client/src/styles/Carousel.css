@@ -22,3 +22,16 @@
        box-shadow: 0 0 15px 4px rgba(255,255,255,0);
     }
   }
+
+.carsouselTitle {
+  font-size: 25px;
+  color: rgb(56, 161, 209) ;
+  text-shadow: 0 0 5px rgba(34, 148, 255, 0.616);
+}
+
+.profileName {
+  font-size: 25px;
+  color: rgb(0, 174, 255);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.616);
+}
+

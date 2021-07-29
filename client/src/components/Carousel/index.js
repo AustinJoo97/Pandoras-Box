@@ -40,7 +40,7 @@ const showArtistCards = (queryResults, queryTitle) => {
     return (
         <Container>
             <Col>
-                <h3 className="p-3 pl-2 pt-5  float-right" >{queryTitle}</h3>
+                <h3 className="p-3 pl-2 pt-5  carsouselTitle" >{queryTitle}</h3>
                 <Slider {...settingsMin}>
                     {queryResults &&
                         queryResults.items.map((album) => (
@@ -78,7 +78,7 @@ const ShowAlbumCards = (queryResults, queryTitle) => {
     return (
         <Container>
             <Col>
-                <h3 className="p-3 pl-2 pt-5  float-right" >{queryTitle}</h3>
+                <h3 className="p-3 pl-2 pt-5  carsouselTitle" >{queryTitle}</h3>
                 <Slider {...settingsGen}>
                     {queryResults.queryResults &&
                         queryResults.queryResults.map((album) => (
@@ -115,7 +115,7 @@ const showCommentCards = (queryResults, queryTitle) => {
     return (
         <Container>
             <Col>
-                <h3 className="p-3 pl-2 pt-5  float-right" >{queryTitle}</h3>
+                <h3 className="p-3 pl-2 pt-5  " >{queryTitle}</h3>
                 <Slider {...settingsComments}>
                     {queryResults &&
                         queryResults.items.map((album) => (
@@ -156,7 +156,7 @@ const PopulateCarousel = ({ queryResults, queryTitle }) => {
 
         <Container>
             <Col>
-                <h3 className="p-3 pl-2 pt-5  float-right" >{queryTitle}</h3>
+                <h3 className="p-3 pl-2 pt-5  carsouselTitle" >{queryTitle}</h3>
                 <Slider {...settingsGen}>
                     {queryResults &&
                         queryResults.map((album) => (
@@ -175,7 +175,7 @@ const PopulateCarousel = ({ queryResults, queryTitle }) => {
                                             </div>
                                             <h5>{album.albumName}</h5>
                                         </Link>
-                                        <Link to={`/artist?q=${album.artistId}`} className="">
+                                        <Link to={`/artist?q=${album.artistId}`} className="text-decoration-none">
                                             <p>by {album.artistName}</p>
                                         </Link>
                                         <p>{album.totalTracks} tracks</p>
