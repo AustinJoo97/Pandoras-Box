@@ -3,7 +3,26 @@ import { Link } from 'react-router-dom'
 import { Container, Col, Card, Row} from "react-bootstrap";
 import '../../styles/ArtistPage.css';
 
-// not ready
+const DisplayGenres = ({ artist }) => {
+    let allGenres = [];
+
+    if (!artist.genres) {
+        return <p>none listed</p>;
+    }
+
+    artist.genres.forEach(genre => {
+        if (allGenres.length === 0) {
+            allGenres = genre
+        } else {
+            allGenres += `, ${genre}`;
+        }
+    })
+    return (
+        <p>Genres: {allGenres}</p>
+    )
+
+}
+
 const ViewArtist = ({ artist, albums }) => {
 
     
@@ -24,7 +43,7 @@ const ViewArtist = ({ artist, albums }) => {
                                     />
                                 </div>
                                 <h4 className="">{album.name}</h4>
-                                <span> - {album.release_date}</span>
+                                <p>{album.release_date}</p>
                                 <p>Album popularity: {album.total_tracks}</p>
                             </Card.Body>
                         </Card>
@@ -35,7 +54,7 @@ const ViewArtist = ({ artist, albums }) => {
 
         return <p>nothing found here</p>;
     }
-    console.log(albums)
+    console.log(artist)
     
     return(
         <Container id="artist">
@@ -50,8 +69,10 @@ const ViewArtist = ({ artist, albums }) => {
                         />
                         <Card.Body className="artistBody">
                             <h2 className="display-3 ">{artist.name}</h2>
-                            {/* <p className="text-muted"> {artist.bio}</p> */}
-                            <p>Artist popularity: {artist.popularity}</p>
+                            <p className="text-muted">Follower count: {artist.followers.total}</p>
+                            <p className="text-muted">Artist popularity: {artist.popularity}/100</p>
+                            <DisplayGenres artist={artist} />
+                            <a href={artist.external_urls.spotify}>View artist on Spotify!</a>
                         </Card.Body>
                     </Card>
                 </Col>

@@ -175,7 +175,7 @@ const PopulateCarousel = ({ queryResults, queryTitle }) => {
                                             </div>
                                             <h5>{album.albumName}</h5>
                                         </Link>
-                                        <Link to={`/artist?q=${album.artistId}`} className="text-decoration-none">
+                                        <Link to={`/artist?q=${album.artistId}`} >
                                             <p>by {album.artistName}</p>
                                         </Link>
                                         <p>{album.totalTracks} tracks</p>

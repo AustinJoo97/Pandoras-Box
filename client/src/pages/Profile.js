@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 
@@ -20,24 +20,63 @@ import {
 
 import { QUERY_USER, QUERY_ME, QUERY_USER_COMMENTS, QUERY_FAVORITE_ALBUMS } from '../utils/queries';
 import { UPDATE_USER, DELETE_FAVORITE } from '../utils/mutations';
+import { getTokenThenSingleAlbumDetails } from '../utils/API'
 import Auth from '../utils/auth';
 
+const callSpotify = async (id, albumImages) => {
+  await getTokenThenSingleAlbumDetails(id).then(res => {
+    albumImages.push({id:id, img:res.images[1].url});
+    // return (
+    //   <img src={res.images[1].url} alt="no peek"></img>
+    // );
+  })
+}
+
+
+const grabFavAlbums = async(favArray, setFavoriteAlbums) => {
+  // console.log(favArray)
+  let arr = []
+  favArray.map(album => {
+    arr.push(album._id);
+  })
+
+  let albumImages = [];
+  const unresolvedPromises = arr.map(id => callSpotify(id, albumImages))
+  
+  await Promise.all(unresolvedPromises)
+  console.log(albumImages)
+  setFavoriteAlbums(albumImages)
+  // return albumImages
+
+}
+
+const divstyle = {
+  display: "flex",
+  // fontFamily: "Arial"
+};
+
+const imgstyle = {
+  width: "150px",
+  height: "150px",
+  padding: "10px"
+}
 
 const Profile = ({ userDetails }) => {
   const { username: userParam } = useParams();
-
   const { loading, data } = useQuery(QUERY_ME);
-
   const { loadingUserComments, userCommentData } = useQuery(QUERY_USER_COMMENTS);
-
   const { loadingFavoriteAlbums, favoriteAlbumsData } = useQuery(QUERY_FAVORITE_ALBUMS);
-
   const [ updateUser, { updadteUserError }] = useMutation(UPDATE_USER);
-
   const [ deleteFavorite, { deleteFavoritesError } ] = useMutation(DELETE_FAVORITE);
 
+  const [favoriteAlbumsList, setFavoriteAlbums] = useState([])
+  // const [isLoading, setLoading] = useState(true);
+
+  
   // redirect to personal profile page if username is yours
   const user = data?.me || data?.user || {};
+  
+
 
   let userComments;
   loadingUserComments ? console.log('Still loading user comments!') : userComments = userCommentData;
@@ -63,6 +102,12 @@ const Profile = ({ userDetails }) => {
   }
 
   const myFavorites = data.me.favorites;
+  
+  if (!favoriteAlbumsList.length) {
+    grabFavAlbums(myFavorites, setFavoriteAlbums)
+  }
+  // let displayAlbums = grabFavAlbums(myFavorites, setFavoriteAlbums)
+  // console.log(displayAlbums)
   
   const ShowAvatar = ({}) => {
     if (user.proPic === "GiAbtract82") {
@@ -115,9 +160,17 @@ const Profile = ({ userDetails }) => {
                     </Card.Body >
                   </Card>
               </Col>
-              <Col xs={2} md={4} lg={6}>
+                
+              <div className="col-4 fav-albums" style={divstyle}>
+              
+                  {favoriteAlbumsList.map(item => (
+                    <a href={`/album?q=${item.id}`}><img key={item.id} src={item.img} alt="album" style={imgstyle}></img></a>
+                  ))}
+              </div>
+
+              {/* <Col xs={2} md={4} lg={6}>
               <PopulateCarousel queryResults={favoriteAlbums} queryType="min" queryTitle="Your Favorite Albums"/>
-              </Col>
+              </Col> */}
               <YourRecentComments />
             </Row>
           </ListGroup>
