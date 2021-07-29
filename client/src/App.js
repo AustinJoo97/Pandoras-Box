@@ -17,6 +17,7 @@ import Album from './pages/Album'
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Search from './pages/Search'
+import Test from './pages/Test';
 
 // components
 import Header from './components/Header';
@@ -57,17 +58,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// paths:
-// /
-// /me
-// /profiles/:username
-// /settings
-// /login
-// /signup
-// /artists/:artistId
-// /albums/:albumId
-// /search/:query
-
 
 function App() {
   return (
@@ -93,10 +83,6 @@ function App() {
               <UpdateUser />
             </Route>
 
-            <Route exact path="/test">
-              <Artist />
-            </Route>
-
             <Route path="/login">
               <Login />
             </Route>
@@ -115,6 +101,10 @@ function App() {
 
             <Route exact path="/search">
               <Search />
+            </Route>
+
+            <Route exact path="/test">
+              <Test />
             </Route>
           </div>
           <Footer />
