@@ -1,4 +1,5 @@
 import ViewAlbum from '../components/DisplayAlbumView';
+
 import { useEffect, useState } from 'react';
 import { getTokenThenSingleAlbumDetails } from '../utils/API';
 
@@ -10,6 +11,7 @@ const queryAlbum = async (setAlbum) => {
     const response = await getTokenThenSingleAlbumDetails(albumId);
     // console.log(response)
     setAlbum(response)
+
 
 }
 
